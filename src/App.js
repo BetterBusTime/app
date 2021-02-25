@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Boros from "./components/Boros";
 
 function App() {
     const [routes, setRoutes] = useState([]);
@@ -57,13 +58,7 @@ function App() {
 
     return (
         <div className='App'>
-            {routes.map(route => (
-                <div key={route.id}>
-                    <p>
-                        {route.shortName} - {route.longName}
-                    </p>
-                </div>
-            ))}
+            <Boros />
         </div>
     );
 }
