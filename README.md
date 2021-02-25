@@ -10,7 +10,9 @@ Packages are managed via `npm`. Run a `npm ci` command to avoid generating a new
 
 ## Technologies Used
 
-The client side application is written in React and communicates with the [MTA OneBusAway API](https://bustime.mta.info/wiki/Developers/OneBusAwayRESTfulAPI) to discover bus routes and bus stops, and the [MTA SIRI API](https://bustime.mta.info/wiki/Developers/SIRIIntro) for real time schedule information. The backend API is written in Django, talking to a PostgreSQL database.
+~~The client side application is written in React and communicates with the [MTA OneBusAway API](https://bustime.mta.info/wiki/Developers/OneBusAwayRESTfulAPI) to discover bus routes and bus stops, and the [MTA SIRI API](https://bustime.mta.info/wiki/Developers/SIRIIntro) for real time schedule information. The backend API is written in Django, talking to a PostgreSQL database.~~
+
+The [MTA OneBusAway API](https://bustime.mta.info/wiki/Developers/OneBusAwayRESTfulAPI) does not provide an `Access-Control-Allow-Origin` header, meaning requests from the browser are blocked due to standard CORS policy. To get around this, the backend acts as a proxy server to sidestep the CORS issue. The backend is now written in Express, and handles the 3rd party API interactions. The front end is still written in React.
 
 ## User stories
 
@@ -35,7 +37,7 @@ The client side application is written in React and communicates with the [MTA O
 
 | Tasks                   | Priority | Anticipated | Invested | Total |
 | ----------------------- | -------- | ----------- | -------- | ----- |
-| Project scaffolding     | H        | 2 hrs       | X        | X     |
+| Project scaffolding     | H        | 2 hrs       | 2        | X     |
 | Backend models          | H        | 4 hrs       | X        | X     |
 | User authentication     | H        | 4 hrs       | X        | X     |
 | RESTful routes          | H        | 4 hrs       | X        | X     |
@@ -54,7 +56,7 @@ The client side application is written in React and communicates with the [MTA O
 | Video presentation      | H        | 12 hrs      | X        | X     |
 | Bug fixes               | H        | 20 hrs      | X        | X     |
 | Refactoring             | M        | 20 hrs      | X        | X     |
-| TOTALS                  | X        | 134 hrs     | X        | X     |
+| TOTALS                  | X        | 134 hrs     | 2        | X     |
 
 ## Anticipated Schedule
 
