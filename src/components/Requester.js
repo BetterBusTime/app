@@ -7,6 +7,7 @@ export default class Requester {
             ? "http://localhost:4000"
             : "http://localhost:4000";
     static ROUTES_URL = this.BASE + "/routes";
+    static STOPS_URL = this.BASE + "/stops";
 
     static getRouteList = async () => {
         const response = await axios.get(this.ROUTES_URL);
@@ -15,6 +16,12 @@ export default class Requester {
 
     static getRouteDetail = async id => {
         const url = `${this.ROUTES_URL}/${id}`;
+        const response = await axios.get(url);
+        return response.data;
+    };
+
+    static getStop = async id => {
+        const url = `${this.STOPS_URL}/${id}`;
         const response = await axios.get(url);
         return response.data;
     };

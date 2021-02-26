@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Requester from "./Requester";
 
 export default function BusRoute({ routeId }) {
     const [route, setRoute] = useState(null);
+    const history = useHistory();
 
     useEffect(() => {
         Requester.getRouteDetail(routeId)
@@ -28,6 +30,8 @@ export default function BusRoute({ routeId }) {
         return { ...details, to: to, from: from };
     };
 
+    const handleClick = stop => history.push(`/stops/${stop}`);
+
     return (
         route && (
             <div className='bus-route'>
@@ -41,13 +45,21 @@ export default function BusRoute({ routeId }) {
                     <div className='direction-to'>
                         <p>TO:</p>
                         {route.to.stops.map(stop => (
-                            <Button key={stop.id}>{stop.name}</Button>
+                            <Button
+                                key={stop.id}
+                                onClick={() => handleClick(stop.code)}>
+                                {stop.name}
+                            </Button>
                         ))}
                     </div>
                     <div className='direction-from'>
                         <p>FROM:</p>
                         {route.from.stops.map(stop => (
-                            <Button key={stop.id}>{stop.name}</Button>
+                            <Button
+                                key={stop.id}
+                                onClick={() => handleClick(stop.code)}>
+                                {stop.name}
+                            </Button>
                         ))}
                     </div>
                 </div>
