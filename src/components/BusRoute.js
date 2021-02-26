@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import RoutesHelper from "./RoutesHelper";
+import Requester from "./Requester";
 
 export default function BusRoute({ routeId }) {
     const [route, setRoute] = useState(null);
 
     useEffect(() => {
-        RoutesHelper.getRouteDetail(routeId)
+        Requester.getRouteDetail(routeId)
             .then(data => processRoute(data))
             .then(data => setRoute(data));
     }, [routeId]);

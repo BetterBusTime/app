@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default class RoutesHelper {
+export default class Requester {
     // TODO update with correct production url
     static BASE =
         process.env.NODE_ENV === "production"

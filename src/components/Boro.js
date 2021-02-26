@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import RoutesHelper from "./RoutesHelper";
+import Requester from "./Requester";
 
 export default function Boro({ boroKey }) {
     const [routes, setRoutes] = useState([]);
     const history = useHistory();
 
     useEffect(() => {
-        RoutesHelper.getFilteredRoutes(boroKey).then(data => setRoutes(data));
+        Requester.getFilteredRoutes(boroKey).then(data => setRoutes(data));
     }, [boroKey]);
 
     return (
