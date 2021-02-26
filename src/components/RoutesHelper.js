@@ -1,12 +1,20 @@
 import axios from "axios";
 
 export default class RoutesHelper {
-    static getRoutes = async () => {
-        // TODO update with correct production url
-        const url =
-            process.env.NODE_ENV === "production"
-                ? "http://localhost:4000/routes"
-                : "http://localhost:4000/routes";
+    // TODO update with correct production url
+    static BASE =
+        process.env.NODE_ENV === "production"
+            ? "http://localhost:4000"
+            : "http://localhost:4000";
+    static ROUTES_URL = this.BASE + "/routes";
+
+    static getRouteList = async () => {
+        const response = await axios.get(this.ROUTES_URL);
+        return response.data;
+    };
+
+    static getRouteDetail = async id => {
+        const url = `${this.ROUTES_URL}/${id}`;
         const response = await axios.get(url);
         return response.data;
     };
@@ -45,7 +53,7 @@ export default class RoutesHelper {
     };
 
     static generateRoutes = async () => {
-        const routes = await this.getRoutes();
+        const routes = await this.getRouteList();
         return this.categorySort(routes);
     };
 
