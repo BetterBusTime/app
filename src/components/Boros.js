@@ -1,6 +1,9 @@
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 export default function Boros() {
+    const history = useHistory();
+
     const boros = [
         {
             key: "B",
@@ -25,9 +28,13 @@ export default function Boros() {
     ];
 
     return (
-        <div className='boros'>
+        <div className='boros-buttons'>
             {boros.map(boro => (
-                <Button key={boro.key}>{boro.val}</Button>
+                <Button
+                    key={boro.key}
+                    onClick={() => history.push(`/boros/${boro.key}`)}>
+                    {boro.val}
+                </Button>
             ))}
         </div>
     );

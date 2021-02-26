@@ -1,8 +1,10 @@
 import "./App.css";
 
 import { useEffect, useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Boros from "./components/Boros";
+import Boro from "./components/Boro";
 
 function App() {
     const [routes, setRoutes] = useState([]);
@@ -56,9 +58,45 @@ function App() {
         return data;
     };
 
+    const getFilteredRoutes = key => {
+        switch (key) {
+            case "B":
+                return routes.filter(
+                    route => route.boro === "B" || route.boro === "BM"
+                );
+            case "Bx":
+                return routes.filter(
+                    route => route.boro === "Bx" || route.boro === "BxM"
+                );
+            case "M":
+                return routes.filter(
+                    route => route.boro === "M" || route.boro === "X"
+                );
+            case "Q":
+                return routes.filter(
+                    route => route.boro === "Q" || route.boro === "QM"
+                );
+            case "S":
+                return routes.filter(
+                    route => route.boro === "S" || route.boro === "SIM"
+                );
+            default:
+                break;
+        }
+    };
+
     return (
         <div className='App'>
-            <Boros />
+            <Switch>
+                <Route
+                    path='/boros/:key'
+                    render={({ match }) => (
+                        <Boro routes={getFilteredRoutes(match.params.key)} />
+                    )}
+                />
+                <Route path='/boros' render={() => <Boros />} />
+                <Route path='/' render={() => <Redirect to='/boros' />} />
+            </Switch>
         </div>
     );
 }
