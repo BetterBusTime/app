@@ -4,7 +4,7 @@ export default class Requester {
     // TODO update with correct production url
     static BASE =
         process.env.NODE_ENV === "production"
-            ? "http://localhost:4000"
+            ? "https://betterbustime-api.herokuapp.com"
             : "http://localhost:4000";
     static ROUTES_URL = this.BASE + "/routes";
     static STOPS_URL = this.BASE + "/stops";
