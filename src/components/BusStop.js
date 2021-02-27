@@ -14,6 +14,7 @@ export default function BusStop({ stopCode }) {
         const processVisitors = visitors =>
             visitors
                 .filter(
+                    // TODO fix this so all buses show up
                     // Only buses that are actively traveling to the stop
                     visitor => !visitor.MonitoredVehicleJourney.ProgressStatus
                 )

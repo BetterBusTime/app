@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import SearchContext from "./SearchContext";
 import Requester from "./Requester";
 import Routes from "./Routes";
 
-export default function Searcher() {
+export default function Searcher({ query, setQuery, results, setResults }) {
     const EMPTY_STRING = "";
     const [routes, setRoutes] = useState([]);
-    const [query, setQuery] = useState(EMPTY_STRING);
-    const [results, setResults] = useState([]);
+    const { resetSearch } = useContext(SearchContext);
 
     useEffect(() => {
         Requester.generateRoutes().then(data => setRoutes(data));
@@ -31,15 +31,12 @@ export default function Searcher() {
                         .includes(query.toLowerCase())
             )
         );
-    }, [routes, query]);
+    }, [routes, query, setResults]);
 
     const handleChange = event => {
-        const value = event.target.value.trim();
-
         // Reset our search results when the search field is empty
-        if (value === EMPTY_STRING) {
-            setResults([]);
-            setQuery(value);
+        if (event.target.value.trim() === EMPTY_STRING) {
+            resetSearch();
             return;
         }
 
