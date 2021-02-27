@@ -1,5 +1,4 @@
 import { useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
 export default function Boros() {
     const history = useHistory();
@@ -30,11 +29,13 @@ export default function Boros() {
     return (
         <div className='boros-buttons'>
             {boros.map(boro => (
-                <Button
+                <button
+                    type='button'
                     key={boro.key}
+                    className='boro-button'
                     onClick={() => history.push(`/boros/${boro.key}`)}>
                     {boro.val}
-                </Button>
+                </button>
             ))}
         </div>
     );

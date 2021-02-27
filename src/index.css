@@ -5,6 +5,9 @@
     --accent-font: "Chakra Petch", sans-serif;
 
     --mta-blue: #1c57b3;
+    --accent-color: #1cb378;
+    --accent-dim: #199d69;
+    --accent-dimmer: #15875a;
 }
 
 body {

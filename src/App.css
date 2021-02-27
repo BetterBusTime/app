@@ -1,14 +1,45 @@
 header {
     color: white;
     background-color: var(--mta-blue);
-
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem 0;
 }
 
 .title-banner {
     font-family: var(--accent-font);
     font-weight: 700;
-
     margin: 0;
+}
+
+main {
+    margin-top: 1rem;
+}
+
+.boros-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.boro-button {
+    outline: none;
+    color: white;
+    background-color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 1rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    transition: 0.1s all linear;
+}
+
+.boro-button:hover {
+    background-color: var(--accent-dim);
+    box-shadow: 0 0 3px 3px var(--accent-color);
+}
+
+.boro-button:active {
+    background-color: var(--accent-dimmer);
+    box-shadow: 0 0 6px 6px var(--accent-dim);
 }
