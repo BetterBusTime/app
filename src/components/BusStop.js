@@ -51,10 +51,10 @@ export default function BusStop({ stopCode }) {
             <div className='bus-stop'>
                 {stop.visitors.map(visitor => (
                     <div key={visitor.ref} className='stop-visitor'>
-                        <p>
+                        <p className='line-name'>
                             {visitor.line} to {visitor.dest}
                         </p>
-                        <p>
+                        <p className='time-away'>
                             {timeAway(visitor.calls)} -{" "}
                             {visitor.calls.ArrivalProximityText}
                         </p>

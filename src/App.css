@@ -12,7 +12,8 @@ header {
 }
 
 .buttons-container,
-.route-details {
+.route-details,
+.bus-stop {
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -69,6 +70,7 @@ header {
 .route-name,
 .route-desc {
     margin: 0;
+    line-height: 1.25;
 }
 
 .route-desc {
@@ -91,4 +93,20 @@ header {
     font-size: 1.25rem;
     min-height: 70px;
     margin: 0.25rem;
+}
+
+.stop-visitor {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0.75rem 0.25rem;
+}
+
+.line-name,
+.time-away {
+    margin: 0;
+    line-height: 1.25;
+}
+
+.line-name {
+    font-style: italic;
 }
