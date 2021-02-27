@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+import Searcher from "./components/Searcher";
 import Boros from "./components/Boros";
 import Boro from "./components/Boro";
 import BusRoute from "./components/BusRoute";
@@ -17,6 +18,7 @@ function App() {
                 </h1>
             </header>
             <main>
+                <Searcher />
                 <Switch>
                     <Route
                         path='/boros/:id'

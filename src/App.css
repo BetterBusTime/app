@@ -16,6 +16,34 @@ header {
     text-shadow: 0 0 3px var(--accent-color);
 }
 
+.search-form {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.25rem;
+    margin: 2rem 1rem 0;
+}
+
+.search-query {
+    outline: none;
+    max-width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.search-query:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.search-query:active,
+.search-query:focus {
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.search-button {
+    padding: 0.5rem 1rem;
+}
+
 .buttons-container,
 .route-details,
 .bus-stop {
@@ -39,7 +67,8 @@ header {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.control-button:active {
+.control-button:active,
+.control-button:focus {
     background-color: var(--accent-dimmer);
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
