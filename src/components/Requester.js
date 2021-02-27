@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default class Requester {
-    // TODO update with correct production url
     static BASE =
         process.env.NODE_ENV === "production"
             ? "https://betterbustime-api.herokuapp.com"
