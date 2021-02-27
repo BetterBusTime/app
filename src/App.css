@@ -1,0 +1,14 @@
+header {
+    color: white;
+    background-color: var(--mta-blue);
+
+    text-align: center;
+    padding: 1rem;
+}
+
+.title-banner {
+    font-family: var(--accent-font);
+    font-weight: 700;
+
+    margin: 0;
+}
