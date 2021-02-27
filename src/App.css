@@ -11,7 +11,8 @@ header {
     margin: 0;
 }
 
-.buttons-container {
+.buttons-container,
+.route-details {
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -19,6 +20,8 @@ header {
 
 .control-button {
     outline: none;
+    color: white;
+    background-color: var(--accent-color);
     font-weight: 500;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
@@ -26,27 +29,19 @@ header {
 }
 
 .control-button:hover {
+    background-color: var(--accent-dim);
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .control-button:active {
+    background-color: var(--accent-dimmer);
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .boro-button {
-    color: white;
-    background-color: var(--accent-color);
     font-size: 2rem;
     margin: 1rem;
     padding: 0.75rem;
-}
-
-.boro-button:hover {
-    background-color: var(--accent-dim);
-}
-
-.boro-button:active {
-    background-color: var(--accent-dimmer);
 }
 
 .route-button {
@@ -63,4 +58,37 @@ header {
 
 .route-button:active {
     opacity: 1;
+}
+
+.route-details {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1.5rem 1.5rem 0;
+}
+
+.route-name,
+.route-desc {
+    margin: 0;
+}
+
+.route-desc {
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+.outbound-label,
+.inbound-label {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 1rem;
+}
+
+.outbound-label {
+    text-align: right;
+}
+
+.stop-button {
+    font-size: 1.25rem;
+    min-height: 70px;
+    margin: 0.25rem;
 }

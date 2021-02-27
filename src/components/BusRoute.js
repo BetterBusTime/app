@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Requester from "./Requester";
 
 export default function BusRoute({ routeId }) {
@@ -24,10 +23,12 @@ export default function BusRoute({ routeId }) {
         const details = data.references.routes.find(
             r => r.id === data.entry.routeId
         );
-        const to = processStops(data.entry.stopGroupings[0].stopGroups[0]);
-        const from = processStops(data.entry.stopGroupings[0].stopGroups[1]);
+        const outbound = processStops(
+            data.entry.stopGroupings[0].stopGroups[0]
+        );
+        const inbound = processStops(data.entry.stopGroupings[0].stopGroups[1]);
 
-        return { ...details, to: to, from: from };
+        return { ...details, outbound: outbound, inbound: inbound };
     };
 
     const handleClick = stop => history.push(`/stops/${stop}`);
@@ -36,30 +37,32 @@ export default function BusRoute({ routeId }) {
         route && (
             <div className='bus-route'>
                 <div className='route-details'>
-                    <p>
+                    <p className='route-name'>
                         {route.shortName} - {route.longName}
                     </p>
-                    <p>{route.description}</p>
+                    <p className='route-desc'>{route.description}</p>
                 </div>
                 <div className='bus-stops'>
-                    <div className='direction-to'>
-                        <p>TO:</p>
-                        {route.to.stops.map(stop => (
-                            <Button
+                    <div className='outbound-direction buttons-container'>
+                        <p className='outbound-label'>Outbound Stops</p>
+                        {route.outbound.stops.map(stop => (
+                            <button
                                 key={stop.id}
+                                className='stop-button control-button'
                                 onClick={() => handleClick(stop.code)}>
                                 {stop.name}
-                            </Button>
+                            </button>
                         ))}
                     </div>
-                    <div className='direction-from'>
-                        <p>FROM:</p>
-                        {route.from.stops.map(stop => (
-                            <Button
+                    <div className='inbound-direction buttons-container'>
+                        <p className='inbound-label'>Inbound Stops</p>
+                        {route.inbound.stops.map(stop => (
+                            <button
                                 key={stop.id}
+                                className='stop-button control-button'
                                 onClick={() => handleClick(stop.code)}>
                                 {stop.name}
-                            </Button>
+                            </button>
                         ))}
                     </div>
                 </div>
