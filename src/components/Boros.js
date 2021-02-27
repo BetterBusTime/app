@@ -27,12 +27,12 @@ export default function Boros() {
     ];
 
     return (
-        <div className='boros-buttons'>
+        <div className='boros-buttons buttons-container'>
             {boros.map(boro => (
                 <button
                     type='button'
                     key={boro.key}
-                    className='boro-button'
+                    className='boro-button control-button'
                     onClick={() => history.push(`/boros/${boro.key}`)}>
                     {boro.val}
                 </button>

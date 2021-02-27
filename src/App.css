@@ -11,35 +11,56 @@ header {
     margin: 0;
 }
 
-main {
-    margin-top: 1rem;
-}
-
-.boros-buttons {
+.buttons-container {
     display: flex;
     flex-direction: column;
     padding: 1rem;
 }
 
-.boro-button {
+.control-button {
     outline: none;
+    font-weight: 500;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    transition: 0.1s all linear;
+}
+
+.control-button:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.control-button:active {
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.boro-button {
     color: white;
     background-color: var(--accent-color);
     font-size: 2rem;
-    font-weight: 500;
     margin: 1rem;
-    border: 1px solid var(--accent-dim);
-    border-radius: 0.5rem;
     padding: 0.75rem;
-    transition: 0.1s all linear;
 }
 
 .boro-button:hover {
     background-color: var(--accent-dim);
-    box-shadow: 0 0 3px 3px var(--accent-color);
 }
 
 .boro-button:active {
     background-color: var(--accent-dimmer);
-    box-shadow: 0 0 6px 6px var(--accent-dim);
+}
+
+.route-button {
+    color: black;
+    font-size: 1.25rem;
+    min-height: 70px;
+    margin: 0.75rem;
+    opacity: 0.88;
+}
+
+.route-button:hover {
+    opacity: 0.94;
+}
+
+.route-button:active {
+    opacity: 1;
 }
