@@ -1,16 +1,20 @@
 import "./App.css";
 
-import { Redirect, Route, Switch } from "react-router-dom";
+import { useHistory, Redirect, Route, Switch } from "react-router-dom";
 import Boros from "./components/Boros";
 import Boro from "./components/Boro";
 import BusRoute from "./components/BusRoute";
 import BusStop from "./components/BusStop";
 
 function App() {
+    const history = useHistory();
+
     return (
         <div className='App'>
             <header>
-                <h1 className='title-banner'>Better Bus Time</h1>
+                <h1 className='title-banner' onClick={() => history.push("/")}>
+                    Better Bus Time
+                </h1>
             </header>
             <main>
                 <Switch>
