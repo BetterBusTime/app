@@ -5,6 +5,10 @@ header {
     padding: 1.5rem 0;
 }
 
+main {
+    margin: 0 0 1rem;
+}
+
 .title-banner {
     cursor: pointer;
     font-family: var(--accent-font);
@@ -16,16 +20,15 @@ header {
     text-shadow: 0 0 3px var(--accent-color);
 }
 
-.search-form {
+.search-container {
     display: flex;
-    justify-content: space-evenly;
-    font-size: 1.25rem;
-    margin: 2rem 1rem 0;
+    flex-direction: column;
 }
 
 .search-query {
     outline: none;
-    max-width: 200px;
+    font-size: 1.25rem;
+    margin: 2rem 2rem 1rem;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -49,7 +52,7 @@ header {
 .bus-stop {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0 1rem;
 }
 
 .control-button {
@@ -98,7 +101,7 @@ header {
 .route-details {
     font-size: 1.5rem;
     font-weight: 500;
-    padding: 1.5rem 1.5rem 0;
+    padding: 0.5rem 1.5rem 0;
 }
 
 .route-name,
@@ -120,7 +123,7 @@ header {
 .inbound-label {
     font-size: 1.25rem;
     font-weight: 500;
-    margin: 0 1rem;
+    margin: 1rem 1rem 0;
 }
 
 .outbound-label {

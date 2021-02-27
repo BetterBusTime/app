@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Requester from "./Requester";
+import Routes from "./Routes";
 
 export default function Searcher() {
+    const EMPTY_STRING = "";
     const [routes, setRoutes] = useState([]);
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(EMPTY_STRING);
     const [results, setResults] = useState([]);
-    const history = useHistory();
 
     useEffect(() => {
         Requester.generateRoutes().then(data => setRoutes(data));
     }, []);
 
-    const handleSubmit = event => {
-        event.preventDefault();
+    // Update our search results every time the search query changes
+    useEffect(() => {
+        // Don't do anything with no query
+        if (query === EMPTY_STRING) return;
+
         setResults(
             routes.filter(
                 route =>
@@ -28,34 +31,31 @@ export default function Searcher() {
                         .includes(query.toLowerCase())
             )
         );
+    }, [routes, query]);
+
+    const handleChange = event => {
+        const value = event.target.value.trim();
+
+        // Reset our search results when the search field is empty
+        if (value === EMPTY_STRING) {
+            setResults([]);
+            setQuery(value);
+            return;
+        }
+
+        setQuery(event.target.value);
     };
 
     return (
-        <>
-            <form className='search-form' onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    className='search-query'
-                    placeholder='Find your route...'
-                    value={query}
-                    onChange={event => setQuery(event.target.value)}
-                />
-                <button type='submit' className='search-button control-button'>
-                    Search
-                </button>
-            </form>
-            <div className='search-results buttons-container'>
-                {results.map(result => (
-                    <button
-                        type='button'
-                        key={result.id}
-                        className='route-button control-button'
-                        style={{ backgroundColor: `#${result.color}` }}
-                        onClick={() => history.push(`/routes/${result.id}`)}>
-                        {result.shortName} - {result.longName}
-                    </button>
-                ))}
-            </div>
-        </>
+        <div className='search-container'>
+            <input
+                type='text'
+                className='search-query'
+                placeholder='Find your route...'
+                value={query}
+                onChange={handleChange}
+            />
+            <Routes routes={results} />
+        </div>
     );
 }
