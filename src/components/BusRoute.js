@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import SearchContext from "./SearchContext";
 import Requester from "./Requester";
 
 export default function BusRoute({ routeId }) {
     const [route, setRoute] = useState(null);
-    const { resetSearch } = useContext(SearchContext);
     const history = useHistory();
 
     useEffect(() => {
@@ -33,10 +31,7 @@ export default function BusRoute({ routeId }) {
         return { ...details, outbound: outbound, inbound: inbound };
     };
 
-    const handleClick = stop => {
-        resetSearch();
-        history.push(`/stops/${stop}`);
-    };
+    const handleClick = stop => history.push(`/stops/${stop}`);
 
     return (
         route && (

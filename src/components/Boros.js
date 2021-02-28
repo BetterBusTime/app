@@ -1,9 +1,6 @@
-import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import SearchContext from "./SearchContext";
 
 export default function Boros() {
-    const { resetSearch } = useContext(SearchContext);
     const history = useHistory();
 
     const boros = [
@@ -36,10 +33,7 @@ export default function Boros() {
                     type='button'
                     key={boro.key}
                     className='boro-button control-button'
-                    onClick={() => {
-                        resetSearch();
-                        history.push(`/boros/${boro.key}`);
-                    }}>
+                    onClick={() => history.push(`/boros/${boro.key}`)}>
                     {boro.val}
                 </button>
             ))}

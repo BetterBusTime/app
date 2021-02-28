@@ -1,12 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import SearchContext from "./SearchContext";
+import { useEffect, useState } from "react";
 import Requester from "./Requester";
 import Routes from "./Routes";
 
-export default function Searcher({ query, setQuery, results, setResults }) {
+export default function Searcher({
+    query,
+    setQuery,
+    results,
+    setResults,
+    resetSearch
+}) {
     const EMPTY_STRING = "";
     const [routes, setRoutes] = useState([]);
-    const { resetSearch } = useContext(SearchContext);
 
     useEffect(() => {
         Requester.generateRoutes().then(data => setRoutes(data));
