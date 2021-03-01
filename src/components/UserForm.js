@@ -41,7 +41,8 @@ export default function UserForm({ text }) {
 
         try {
             const response = await axios.post(url, user, options);
-            localStorage.bbt_token = response.data.data;
+            localStorage.access_token = response.data.data;
+            localStorage.username = user.username;
             history.push("/");
         } catch (error) {
             // We can catch axios errors here as well
