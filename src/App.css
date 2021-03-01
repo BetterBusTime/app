@@ -128,20 +128,44 @@ main {
     padding: 0.75rem;
 }
 
+.route-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .route-button {
+    flex: 1;
     color: black;
     font-size: 1.25rem;
     min-height: 70px;
-    margin: 0.75rem;
+    margin: 0.75rem 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     opacity: 0.88;
 }
 
-.route-button:hover {
+.route-button:hover,
+.pin-button:hover {
     opacity: 0.94;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.route-button:active {
+.route-button:active,
+.pin-button:active {
     opacity: 1;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.pin-button {
+    align-self: stretch;
+    width: 40px;
+    margin: 0.75rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    padding: 0.25rem;
+    opacity: 0.88;
 }
 
 .route-details {
