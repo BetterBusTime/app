@@ -3,16 +3,35 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function UserForm({ text }) {
-    const [user, setUser] = useState({ username: "", password: "" });
-    const [error, setError] = useState("");
+    const EMPTY_STRING = "";
+    const [user, setUser] = useState({
+        username: EMPTY_STRING,
+        password: EMPTY_STRING
+    });
+    const [error, setError] = useState(EMPTY_STRING);
     const history = useHistory();
 
-    const handleChange = event => {
-        setUser({ ...user, [event.target.id]: event.target.value });
+    const validates = () => {
+        let msg = EMPTY_STRING;
+        let valid = true;
+
+        if (user.username === EMPTY_STRING) {
+            msg = "Username should not be blank. ";
+            valid = false;
+        }
+        if (user.password === EMPTY_STRING) {
+            msg += "Password should not be blank.";
+            valid = false;
+        }
+
+        setError(msg);
+        return valid;
     };
 
     const handleSubmit = async event => {
         event.preventDefault();
+
+        if (validates() === false) return;
 
         const url =
             process.env.NODE_ENV === "production"
@@ -31,11 +50,15 @@ export default function UserForm({ text }) {
         }
     };
 
+    const handleChange = event => {
+        setUser({ ...user, [event.target.id]: event.target.value });
+    };
+
     const toTitleCase = word => word[0].toUpperCase().concat(word.slice(1));
 
     return (
         <form className='user-form' onSubmit={handleSubmit}>
-            <label for='username' className='form-label'>
+            <label htmlFor='username' className='form-label'>
                 Username
             </label>
             <input
@@ -46,14 +69,14 @@ export default function UserForm({ text }) {
                 value={user.username}
                 onChange={handleChange}
             />
-            <label for='password' className='form-label'>
+            <label htmlFor='password' className='form-label'>
                 Password
             </label>
             <input
                 id='password'
                 type='password'
                 className='form-input'
-                placeholder='Enter password'
+                placeholder='Enter your password'
                 value={user.password}
                 onChange={handleChange}
             />

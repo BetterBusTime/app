@@ -40,7 +40,14 @@ function App() {
                     resetSearch={resetSearch}
                 />
                 <Switch>
-                    <Route path='/users/register' render={() => <UserForm />} />
+                    <Route
+                        path='/users/login'
+                        render={() => <UserForm text='login' />}
+                    />
+                    <Route
+                        path='/users/register'
+                        render={() => <UserForm text='register' />}
+                    />
                     <Route
                         path='/boros/:id'
                         render={({ match }) => (

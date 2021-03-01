@@ -50,7 +50,7 @@ main {
 .error-text {
     font-weight: 500;
     color: var(--danger);
-    align-self: center;
+    text-align: center;
 }
 
 .title-banner {
