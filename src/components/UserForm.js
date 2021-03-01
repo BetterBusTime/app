@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import UserContext from "./UserContext";
 
 export default function UserForm({ text }) {
     const EMPTY_STRING = "";
@@ -9,6 +10,7 @@ export default function UserForm({ text }) {
         password: EMPTY_STRING
     });
     const [error, setError] = useState(EMPTY_STRING);
+    const { setLoggedIn } = useContext(UserContext);
     const history = useHistory();
 
     const validates = () => {
@@ -41,8 +43,11 @@ export default function UserForm({ text }) {
 
         try {
             const response = await axios.post(url, user, options);
+
             localStorage.access_token = response.data.data;
             localStorage.username = user.username;
+            setLoggedIn(true);
+
             history.push("/");
         } catch (error) {
             // We can catch axios errors here as well

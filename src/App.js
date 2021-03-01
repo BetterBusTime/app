@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+import UserContext from "./components/UserContext";
 import Header from "./components/Header";
 import Pins from "./components/Pins";
 import Searcher from "./components/Searcher";
@@ -12,6 +13,7 @@ import BusRoute from "./components/BusRoute";
 import BusStop from "./components/BusStop";
 
 function App() {
+    const [loggedIn, setLoggedIn] = useState(false);
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const history = useHistory();
@@ -21,54 +23,67 @@ function App() {
         setQuery("");
     };
 
+    // Listen for changes in history, and reset search when we navigate
     useEffect(() => {
         const unlisten = history.listen(() => resetSearch());
         return () => unlisten();
     }, [history]);
 
+    // Check for credentials in localStorage, and set the state appropriately
+    useEffect(() => {
+        if (localStorage.username && localStorage.access_token) {
+            setLoggedIn(true);
+        }
+    }, []);
+
     return (
         <div className='App'>
-            <Header />
-            <main>
-                <Pins />
-                <Searcher
-                    query={query}
-                    setQuery={setQuery}
-                    results={results}
-                    setResults={setResults}
-                    resetSearch={resetSearch}
-                />
-                <Switch>
-                    <Route
-                        path='/users/login'
-                        render={() => <UserForm text='login' />}
+            <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
+                <Header />
+                <main>
+                    <Pins />
+                    <Searcher
+                        query={query}
+                        setQuery={setQuery}
+                        results={results}
+                        setResults={setResults}
+                        resetSearch={resetSearch}
                     />
-                    <Route
-                        path='/users/register'
-                        render={() => <UserForm text='register' />}
-                    />
-                    <Route
-                        path='/boros/:id'
-                        render={({ match }) => (
-                            <Boro boroKey={match.params.id} />
-                        )}
-                    />
-                    <Route path='/boros' render={() => <Boros />} />
-                    <Route
-                        path='/routes/:id'
-                        render={({ match }) => (
-                            <BusRoute routeId={match.params.id} />
-                        )}
-                    />
-                    <Route
-                        path='/stops/:id'
-                        render={({ match }) => (
-                            <BusStop stopCode={match.params.id} />
-                        )}
-                    />
-                    <Route path='/' render={() => <Redirect to='/boros' />} />
-                </Switch>
-            </main>
+                    <Switch>
+                        <Route
+                            path='/users/login'
+                            render={() => <UserForm text='login' />}
+                        />
+                        <Route
+                            path='/users/register'
+                            render={() => <UserForm text='register' />}
+                        />
+                        <Route
+                            path='/boros/:id'
+                            render={({ match }) => (
+                                <Boro boroKey={match.params.id} />
+                            )}
+                        />
+                        <Route path='/boros' render={() => <Boros />} />
+                        <Route
+                            path='/routes/:id'
+                            render={({ match }) => (
+                                <BusRoute routeId={match.params.id} />
+                            )}
+                        />
+                        <Route
+                            path='/stops/:id'
+                            render={({ match }) => (
+                                <BusStop stopCode={match.params.id} />
+                            )}
+                        />
+                        <Route
+                            path='/'
+                            render={() => <Redirect to='/boros' />}
+                        />
+                    </Switch>
+                </main>
+            </UserContext.Provider>
         </div>
     );
 }

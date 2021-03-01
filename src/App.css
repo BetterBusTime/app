@@ -11,6 +11,13 @@ main {
     margin: 0 0 1rem;
 }
 
+.user-greeting {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0.5rem 0 0;
+    text-align: center;
+}
+
 .user-button {
     font-size: 1.25rem;
     min-width: 120px;
