@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 
-export default function LoginPanel() {
+export default function AnonPanel() {
     const history = useHistory();
 
     return (

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "./UserContext";
-import LoginPanel from "./LoginPanel";
-import LogoutPanel from "./LogoutPanel";
+import AnonPanel from "./AnonPanel";
+import AuthPanel from "./AuthPanel";
 
 export default function Header() {
     const { loggedIn } = useContext(UserContext);
@@ -13,7 +13,7 @@ export default function Header() {
             <h1 className='title-banner' onClick={() => history.push("/")}>
                 Better Bus Time
             </h1>
-            {loggedIn ? <LogoutPanel /> : <LoginPanel />}
+            {loggedIn ? <AuthPanel /> : <AnonPanel />}
         </header>
     );
 }

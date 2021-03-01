@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import UserContext from "./UserContext";
 
-export default function LogoutPanel() {
+export default function AuthPanel() {
     const { setLoggedIn } = useContext(UserContext);
 
     return (
