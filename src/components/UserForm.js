@@ -44,7 +44,7 @@ export default function UserForm({ text }) {
         try {
             const response = await axios.post(url, user, options);
 
-            localStorage.access_token = response.data.data;
+            localStorage.access_token = response.headers["x-access-token"];
             localStorage.username = user.username;
             setLoggedIn(true);
 
