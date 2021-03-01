@@ -167,13 +167,18 @@ main {
 
 .outbound-label,
 .inbound-label {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
     margin: 1rem 1rem 0;
 }
 
 .outbound-label {
     text-align: right;
+}
+
+.stop-buttons {
+    display: flex;
+    flex-direction: column;
 }
 
 .stop-button {

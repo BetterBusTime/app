@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Routes from "./Routes";
+import Stops from "./Stops";
 
 export default function Pins() {
     const [routes, setRoutes] = useState([]);
@@ -8,7 +10,8 @@ export default function Pins() {
     useEffect(() => {
         if (localStorage.access_token) {
             getPins().then(data => {
-                //
+                setRoutes(data.routes);
+                setStops(data.stops);
             });
         }
     }, []);
@@ -24,6 +27,14 @@ export default function Pins() {
 
         try {
             const response = await axios.get(url, options);
+
+            // Check if an X-Access-Token header was sent
+            // That means our current token has expired
+            // Refresh the token in localStorage
+            if (response.headers["x-access-token"]) {
+                localStorage.access_token = response.headers["x-access-token"];
+            }
+
             return response.data;
         } catch (error) {
             if (error.response) console.error(error.response.data.data);
@@ -31,5 +42,16 @@ export default function Pins() {
         }
     };
 
-    return <div className='pins'></div>;
+    return (
+        <div className='pins'>
+            <div className='route-pins'>
+                <p>Pinned Routes</p>
+                <Routes routes={routes} />
+            </div>
+            <div className='stop-pins'>
+                <p>Pinned Stops</p>
+                <Stops stops={stops} />
+            </div>
+        </div>
+    );
 }

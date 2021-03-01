@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Requester from "./Requester";
+import Stops from "./Stops";
 
 export default function BusRoute({ routeId }) {
     const [route, setRoute] = useState(null);
-    const history = useHistory();
 
     useEffect(() => {
         Requester.getRouteDetail(routeId)
@@ -31,8 +30,6 @@ export default function BusRoute({ routeId }) {
         return { ...details, outbound: outbound, inbound: inbound };
     };
 
-    const handleClick = stop => history.push(`/stops/${stop}`);
-
     return (
         route && (
             <div className='bus-route'>
@@ -45,25 +42,11 @@ export default function BusRoute({ routeId }) {
                 <div className='bus-stops'>
                     <div className='outbound-direction buttons-container'>
                         <p className='outbound-label'>Outbound Stops</p>
-                        {route.outbound.stops.map(stop => (
-                            <button
-                                key={stop.id}
-                                className='stop-button control-button'
-                                onClick={() => handleClick(stop.code)}>
-                                {stop.name}
-                            </button>
-                        ))}
+                        <Stops stops={route.outbound.stops} />
                     </div>
                     <div className='inbound-direction buttons-container'>
                         <p className='inbound-label'>Inbound Stops</p>
-                        {route.inbound.stops.map(stop => (
-                            <button
-                                key={stop.id}
-                                className='stop-button control-button'
-                                onClick={() => handleClick(stop.code)}>
-                                {stop.name}
-                            </button>
-                        ))}
+                        <Stops stops={route.inbound.stops} />
                     </div>
                 </div>
             </div>
