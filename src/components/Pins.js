@@ -44,14 +44,18 @@ export default function Pins() {
 
     return (
         <div className='pins'>
-            <div className='route-pins'>
-                <p>Pinned Routes</p>
-                <Routes routes={routes} />
-            </div>
-            <div className='stop-pins'>
-                <p>Pinned Stops</p>
-                <Stops stops={stops} />
-            </div>
+            {routes.length > 0 && (
+                <div className='route-pins'>
+                    <p>Pinned Routes</p>
+                    <Routes routes={routes} />
+                </div>
+            )}
+            {stops.length > 0 && (
+                <div className='stop-pins'>
+                    <p>Pinned Stops</p>
+                    <Stops stops={stops} />
+                </div>
+            )}
         </div>
     );
 }
