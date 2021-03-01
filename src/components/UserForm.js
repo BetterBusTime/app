@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function Register() {
+export default function UserForm({ text }) {
     const [user, setUser] = useState({ username: "", password: "" });
     const [error, setError] = useState("");
     const history = useHistory();
@@ -16,8 +16,8 @@ export default function Register() {
 
         const url =
             process.env.NODE_ENV === "production"
-                ? "https://betterbustime-api.herokuapp.com/users/register"
-                : "http://localhost:4000/users/register";
+                ? `https://betterbustime-api.herokuapp.com/users/${text}`
+                : `http://localhost:4000/users/${text}`;
         const options = { headers: { "Content-Type": "application/json" } };
 
         try {
@@ -31,8 +31,10 @@ export default function Register() {
         }
     };
 
+    const toTitleCase = word => word[0].toUpperCase().concat(word.slice(1));
+
     return (
-        <form className='register-form' onSubmit={handleSubmit}>
+        <form className='user-form' onSubmit={handleSubmit}>
             <label for='username' className='form-label'>
                 Username
             </label>
@@ -56,7 +58,7 @@ export default function Register() {
                 onChange={handleChange}
             />
             <button type='submit' className='submit-button control-button'>
-                Register
+                {toTitleCase(text)}
             </button>
             <p className='error-text'>{error}</p>
         </form>

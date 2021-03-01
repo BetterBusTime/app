@@ -9,7 +9,7 @@ main {
     margin: 0 0 1rem;
 }
 
-.register-form {
+.user-form {
     display: flex;
     flex-direction: column;
     margin: 2rem;
