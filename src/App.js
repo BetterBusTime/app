@@ -2,12 +2,13 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
 import UserForm from "./components/UserForm";
-import Searcher from "./components/Searcher";
 import Boros from "./components/Boros";
 import Boro from "./components/Boro";
 import BusRoute from "./components/BusRoute";
 import BusStop from "./components/BusStop";
+import Searcher from "./components/Searcher";
 
 function App() {
     const [query, setQuery] = useState("");
@@ -26,11 +27,7 @@ function App() {
 
     return (
         <div className='App'>
-            <header>
-                <h1 className='title-banner' onClick={() => history.push("/")}>
-                    Better Bus Time
-                </h1>
-            </header>
+            <Header />
             <main>
                 <Searcher
                     query={query}
