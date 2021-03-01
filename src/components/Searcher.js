@@ -51,7 +51,7 @@ export default function Searcher({
         <div className='search-container'>
             <input
                 type='text'
-                className='search-query'
+                className='search-query form-input'
                 placeholder='Find your route...'
                 value={query}
                 onChange={handleChange}

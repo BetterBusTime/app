@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+import Register from "./components/Register";
 import Searcher from "./components/Searcher";
 import Boros from "./components/Boros";
 import Boro from "./components/Boro";
@@ -39,6 +40,7 @@ function App() {
                     resetSearch={resetSearch}
                 />
                 <Switch>
+                    <Route path='/users/register' render={() => <Register />} />
                     <Route
                         path='/boros/:id'
                         render={({ match }) => (

@@ -9,6 +9,50 @@ main {
     margin: 0 0 1rem;
 }
 
+.register-form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.form-label {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.form-input {
+    outline: none;
+    font-size: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.form-input + .form-label {
+    margin-top: 1rem;
+}
+
+.form-input:hover {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-input:active,
+.form-input:focus {
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button {
+    font-size: 1.25rem;
+    margin: 2rem 4rem;
+    padding: 0.5rem;
+}
+
+.error-text {
+    font-weight: 500;
+    color: var(--danger);
+    align-self: center;
+}
+
 .title-banner {
     cursor: pointer;
     font-family: var(--accent-font);
@@ -26,21 +70,7 @@ main {
 }
 
 .search-query {
-    outline: none;
-    font-size: 1.25rem;
     margin: 2rem 2rem 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-}
-
-.search-query:hover {
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-
-.search-query:active,
-.search-query:focus {
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .search-button {
