@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Requester from "./Requester";
+import Requester from "../global/Requester";
 import Stops from "./Stops";
 
 export default function BusRoute({ routeId }) {

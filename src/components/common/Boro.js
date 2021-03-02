@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Requester from "./Requester";
+import Requester from "../global/Requester";
 import Routes from "./Routes";
 
 export default function Boro({ boroKey }) {

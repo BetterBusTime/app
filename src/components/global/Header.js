@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "./UserContext";
+import UserContext from "../user/UserContext";
+import AuthPanel from "../user/AuthPanel";
 import AnonPanel from "./AnonPanel";
-import AuthPanel from "./AuthPanel";
 
 export default function Header() {
     const { loggedIn } = useContext(UserContext);

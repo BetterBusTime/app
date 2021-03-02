@@ -2,15 +2,15 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
-import UserContext from "./components/UserContext";
-import Header from "./components/Header";
-import Pins from "./components/Pins";
-import Searcher from "./components/Searcher";
-import UserForm from "./components/UserForm";
-import Boros from "./components/Boros";
-import Boro from "./components/Boro";
-import BusRoute from "./components/BusRoute";
-import BusStop from "./components/BusStop";
+import UserContext from "./components/user/UserContext";
+import Header from "./components/global/Header";
+import Pins from "./components/user/Pins";
+import Searcher from "./components/global/Searcher";
+import UserForm from "./components/user/UserForm";
+import Boro from "./components/common/Boro";
+import Boros from "./components/common/Boros";
+import BusRoute from "./components/common/BusRoute";
+import BusStop from "./components/common/BusStop";
 
 function App() {
     // Global user state

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Requester from "./Requester";
+import Requester from "../global/Requester";
 
 export default function BusStop({ stopCode }) {
     const [stop, setStop] = useState(null);

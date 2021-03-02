@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Requester from "./Requester";
-import Routes from "./Routes";
+import Routes from "../common/Routes";
 
 export default function Searcher({
     query,

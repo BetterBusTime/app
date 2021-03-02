@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import UserContext from "./UserContext";
-import Requester from "./Requester";
-import Routes from "./Routes";
-import Stops from "./Stops";
+import Requester from "../global/Requester";
+import Routes from "../common/Routes";
+import Stops from "../common/Stops";
 
 export default function Pins() {
     const {

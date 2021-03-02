@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "./UserContext";
-import Requester from "./Requester";
+import Requester from "../global/Requester";
 
 export default function UserForm({ text }) {
     const EMPTY_STRING = "";
