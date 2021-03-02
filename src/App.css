@@ -80,6 +80,24 @@ main {
     text-shadow: 0 0 3px var(--accent-color);
 }
 
+.route-pins {
+    margin: 1rem 1rem 0;
+}
+
+.pins-label {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.route-pins .route-buttons-container {
+    padding: 0;
+}
+
+.stop-pins {
+    margin: 1rem 1rem 0;
+}
+
 .search-container {
     display: flex;
     flex-direction: column;
@@ -111,13 +129,16 @@ main {
     transition: 0.1s all linear;
 }
 
-.control-button:hover {
+.control-button:hover,
+.stop-pin-button:hover {
     background-color: var(--accent-dim);
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .control-button:active,
-.control-button:focus {
+.control-button:focus,
+.stop-pin-button:active,
+.stop-pin-button:focus {
     background-color: var(--accent-dimmer);
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
@@ -128,7 +149,8 @@ main {
     padding: 0.75rem;
 }
 
-.route-buttons {
+.route-buttons,
+.stop-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,28 +161,29 @@ main {
     color: black;
     font-size: 1.25rem;
     min-height: 70px;
-    margin: 0.75rem 0;
+    margin: 0.75rem 0 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     opacity: 0.88;
 }
 
 .route-button:hover,
-.pin-button:hover {
+.route-pin-button:hover {
     opacity: 0.94;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .route-button:active,
-.pin-button:active {
+.route-pin-button:active {
     opacity: 1;
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .pin-button {
+    cursor: pointer;
     align-self: stretch;
     width: 40px;
-    margin: 0.75rem 0;
+    margin: 0.75rem 0 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -200,15 +223,18 @@ main {
     text-align: right;
 }
 
-.stop-buttons {
-    display: flex;
-    flex-direction: column;
-}
-
 .stop-button {
+    flex: 1;
     font-size: 1.25rem;
     min-height: 70px;
-    margin: 0.25rem;
+    margin: 0.75rem 0 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.stop-pin-button {
+    background-color: var(--accent-color);
+    opacity: 1;
 }
 
 .stop-visitor {

@@ -31,7 +31,7 @@ export default function Routes({ routes }) {
                     <img
                         src={pin}
                         alt='pin'
-                        className='pin-button'
+                        className='route-pin-button pin-button'
                         style={{ backgroundColor: `#${route.color}` }}
                         onClick={() => pinRoute(route)}
                     />

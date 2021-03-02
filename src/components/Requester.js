@@ -9,6 +9,7 @@ export default class Requester {
     static STOPS_URL = this.BASE + "/stops";
     static USERS_URL = this.BASE + "/users";
     static PIN_ROUTE_URL = this.USERS_URL + "/routes";
+    static PIN_STOP_URL = this.USERS_URL + "/stops";
 
     static postUser = async (endpoint, user) => {
         const url = `${this.USERS_URL}/${endpoint}`;
@@ -35,6 +36,17 @@ export default class Requester {
             }
         };
         const response = await axios.post(this.PIN_ROUTE_URL, route, options);
+        return response;
+    };
+
+    static postStopPin = async stop => {
+        const options = {
+            headers: {
+                Authorization: `Bearer ${localStorage.access_token}`,
+                "Content-Type": "application/json"
+            }
+        };
+        const response = await axios.post(this.PIN_STOP_URL, stop, options);
         return response;
     };
 

@@ -42,13 +42,13 @@ export default function Pins() {
         <div className='pins'>
             {pinnedRoutes.length > 0 && (
                 <div className='route-pins'>
-                    <p>Pinned Routes</p>
+                    <p className='route-pins-label pins-label'>Pinned Routes</p>
                     <Routes routes={pinnedRoutes} />
                 </div>
             )}
             {pinnedStops.length > 0 && (
                 <div className='stop-pins'>
-                    <p>Pinned Stops</p>
+                    <p className='stop-pins-label pins-label'>Pinned Stops</p>
                     <Stops stops={pinnedStops} />
                 </div>
             )}
