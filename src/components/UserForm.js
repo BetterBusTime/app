@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import UserContext from "./UserContext";
+import Requester from "./Requester";
 
 export default function UserForm({ text }) {
     const EMPTY_STRING = "";
@@ -35,14 +35,8 @@ export default function UserForm({ text }) {
 
         if (validates() === false) return;
 
-        const url =
-            process.env.NODE_ENV === "production"
-                ? `https://betterbustime-api.herokuapp.com/users/${text}`
-                : `http://localhost:4000/users/${text}`;
-        const options = { headers: { "Content-Type": "application/json" } };
-
         try {
-            const response = await axios.post(url, user, options);
+            const response = await Requester.postUser(text, user);
 
             localStorage.access_token = response.headers["x-access-token"];
             localStorage.username = user.username;
@@ -51,7 +45,7 @@ export default function UserForm({ text }) {
             history.push("/");
         } catch (error) {
             // We can catch axios errors here as well
-            if (error.response) setError(error.response.data.data);
+            if (error.response) setError(error.response.data.message);
             console.error(error);
         }
     };

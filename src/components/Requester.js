@@ -7,6 +7,24 @@ export default class Requester {
             : "http://localhost:4000";
     static ROUTES_URL = this.BASE + "/routes";
     static STOPS_URL = this.BASE + "/stops";
+    static USERS_URL = this.BASE + "/users";
+
+    static postUser = async (endpoint, user) => {
+        const url = `${this.USERS_URL}/${endpoint}`;
+        const options = { headers: { "Content-Type": "application/json" } };
+
+        const response = await axios.post(url, user, options);
+        return response;
+    };
+
+    static getPins = async () => {
+        const options = {
+            headers: { Authorization: `Bearer ${localStorage.access_token}` }
+        };
+
+        const response = await axios.get(this.USERS_URL, options);
+        return response;
+    };
 
     static getRouteList = async () => {
         const response = await axios.get(this.ROUTES_URL);

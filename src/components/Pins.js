@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Requester from "./Requester";
 import Routes from "./Routes";
 import Stops from "./Stops";
 
@@ -17,16 +17,8 @@ export default function Pins() {
     }, []);
 
     const getPins = async () => {
-        const url =
-            process.env.NODE_ENV === "production"
-                ? "https://betterbustime-api.herokuapp.com/users"
-                : "http://localhost:4000/users";
-        const options = {
-            headers: { Authorization: `Bearer ${localStorage.access_token}` }
-        };
-
         try {
-            const response = await axios.get(url, options);
+            const response = await Requester.getPins();
 
             // Check if an X-Access-Token header was sent
             // That means our current token has expired
@@ -37,7 +29,7 @@ export default function Pins() {
 
             return response.data;
         } catch (error) {
-            if (error.response) console.error(error.response.data.data);
+            if (error.response) console.error(error.response.data.message);
             console.error(error);
         }
     };
