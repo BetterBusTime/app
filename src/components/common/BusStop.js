@@ -42,9 +42,14 @@ export default function BusStop({ stopCode }) {
     const timeAway = calls => {
         const time =
             (new Date(calls.ExpectedArrivalTime) - new Date(stop.now)) / 1000;
-        const mins = Math.floor(time / 60);
-        const secs = time % 60;
-        return `${mins.toFixed()} minute(s), ${secs.toFixed()} second(s)`;
+
+        let mins = Math.floor(time / 60).toFixed();
+        if (isNaN(mins)) mins = " - ";
+
+        let secs = (time % 60).toFixed();
+        if (isNaN(secs)) secs = " - ";
+
+        return `${mins} minute(s), ${secs} second(s)`;
     };
 
     return (
