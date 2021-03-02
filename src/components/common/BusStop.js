@@ -12,25 +12,18 @@ export default function BusStop({ stopCode }) {
 
     const processStop = data => {
         const processVisitors = visitors =>
-            visitors
-                .filter(
-                    // TODO fix this so all buses show up
-                    // Only buses that are actively traveling to the stop
-                    visitor => !visitor.MonitoredVehicleJourney.ProgressStatus
-                )
-                .map(visitor => {
-                    const ref = visitor.MonitoredVehicleJourney.VehicleRef;
-                    const line =
-                        visitor.MonitoredVehicleJourney.PublishedLineName[0];
-                    const dest =
-                        visitor.MonitoredVehicleJourney.DestinationName[0];
-                    return {
-                        ref,
-                        line,
-                        dest,
-                        calls: visitor.MonitoredVehicleJourney.MonitoredCall
-                    };
-                });
+            visitors.map(visitor => {
+                const ref = visitor.MonitoredVehicleJourney.VehicleRef;
+                const line =
+                    visitor.MonitoredVehicleJourney.PublishedLineName[0];
+                const dest = visitor.MonitoredVehicleJourney.DestinationName[0];
+                return {
+                    ref,
+                    line,
+                    dest,
+                    calls: visitor.MonitoredVehicleJourney.MonitoredCall
+                };
+            });
 
         const visitors = processVisitors(
             data.StopMonitoringDelivery[0].MonitoredStopVisit
@@ -40,8 +33,20 @@ export default function BusStop({ stopCode }) {
     };
 
     const timeAway = calls => {
-        const time =
-            (new Date(calls.ExpectedArrivalTime) - new Date(stop.now)) / 1000;
+        // Some busses won't have an expected arrival time
+        // All busses should have an aimed arrival time, which is our fallback
+        // Expected arrival time is a little more accurate
+        const getTime = () => {
+            let arrival;
+            if (calls.ExpectedArrivalTime) {
+                arrival = new Date(calls.ExpectedArrivalTime);
+            } else {
+                arrival = new Date(calls.AimedArrivalTime);
+            }
+            return (arrival - new Date(stop.now)) / 1000;
+        };
+
+        const time = getTime();
 
         let mins = Math.floor(time / 60).toFixed();
         if (isNaN(mins)) mins = " - ";
