@@ -5,7 +5,7 @@ import Requester from "../global/Requester";
 import pin from "../../paper-push-pin.svg";
 
 export default function Stops({ stops }) {
-    const { loggedIn, setPinnedStops } = useContext(UserContext);
+    const { loggedIn, pinnedStops, setPinnedStops } = useContext(UserContext);
     const history = useHistory();
 
     const pinStop = async stop => {
@@ -15,6 +15,20 @@ export default function Stops({ stops }) {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const unpinStop = async stop => {
+        try {
+            const response = await Requester.deleteStopPin(stop);
+            setPinnedStops(response.data.stops);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // See notes in Routes.js component for a similar method
+    const isPinned = stop => {
+        return pinnedStops.find(s => s.id === stop.id) !== undefined;
     };
 
     return (
@@ -30,8 +44,19 @@ export default function Stops({ stops }) {
                     <button
                         disabled={!loggedIn}
                         className='stop-pin-button pin-button'
-                        onClick={() => pinStop(stop)}>
-                        <img src={pin} alt='pin' className='pin-img' />
+                        onClick={() =>
+                            isPinned(stop) ? unpinStop(stop.id) : pinStop(stop)
+                        }>
+                        <img
+                            src={pin}
+                            alt='pin'
+                            className='pin-img'
+                            style={{
+                                filter: isPinned(stop)
+                                    ? "invert(100%)"
+                                    : "invert(0%)"
+                            }}
+                        />
                     </button>
                 </div>
             ))}

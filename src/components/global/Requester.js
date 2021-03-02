@@ -62,6 +62,18 @@ export default class Requester {
         return response;
     };
 
+    static deleteStopPin = async stop => {
+        const url = `${this.STOP_PINS_URL}/${stop}`;
+        const options = {
+            headers: {
+                Authorization: `Bearer ${localStorage.access_token}`,
+                "Content-Type": "application/json"
+            }
+        };
+        const response = await axios.delete(url, options);
+        return response;
+    };
+
     // TODO add error handling for these routes
     // Return the response, let the caller handle the error
     static getRouteList = async () => {
