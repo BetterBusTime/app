@@ -5,7 +5,7 @@ import Requester from "./Requester";
 import pin from "../paper-push-pin.svg";
 
 export default function Stops({ stops }) {
-    const { setPinnedStops } = useContext(UserContext);
+    const { loggedIn, setPinnedStops } = useContext(UserContext);
     const history = useHistory();
 
     const pinStop = async stop => {
@@ -27,12 +27,12 @@ export default function Stops({ stops }) {
                         onClick={() => history.push(`/stops/${stop.code}`)}>
                         {stop.name}
                     </button>
-                    <img
-                        src={pin}
-                        alt='pin'
+                    <button
+                        disabled={!loggedIn}
                         className='stop-pin-button pin-button'
-                        onClick={() => pinStop(stop)}
-                    />
+                        onClick={() => pinStop(stop)}>
+                        <img src={pin} alt='pin' className='pin-img' />
+                    </button>
                 </div>
             ))}
         </div>

@@ -10,7 +10,9 @@ export default function UserForm({ text }) {
         password: EMPTY_STRING
     });
     const [error, setError] = useState(EMPTY_STRING);
-    const { setLoggedIn } = useContext(UserContext);
+    const { setLoggedIn, setPinnedRoutes, setPinnedStops } = useContext(
+        UserContext
+    );
     const history = useHistory();
 
     const validates = () => {
@@ -36,11 +38,15 @@ export default function UserForm({ text }) {
         if (validates() === false) return;
 
         try {
-            const response = await Requester.postUser(text, user);
+            const loginResponse = await Requester.postUser(text, user);
 
-            localStorage.access_token = response.headers["x-access-token"];
+            localStorage.access_token = loginResponse.headers["x-access-token"];
             localStorage.username = user.username;
             setLoggedIn(true);
+
+            const pinsResponse = await Requester.getPins();
+            setPinnedRoutes(pinsResponse.data.routes);
+            setPinnedStops(pinsResponse.data.stops);
 
             history.push("/");
         } catch (error) {

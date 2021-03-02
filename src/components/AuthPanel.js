@@ -2,7 +2,16 @@ import { useContext } from "react";
 import UserContext from "./UserContext";
 
 export default function AuthPanel() {
-    const { setLoggedIn } = useContext(UserContext);
+    const { setLoggedIn, setPinnedRoutes, setPinnedStops } = useContext(
+        UserContext
+    );
+
+    const handleLogout = () => {
+        localStorage.clear();
+        setLoggedIn(false);
+        setPinnedRoutes([]);
+        setPinnedStops([]);
+    };
 
     return (
         <div>
@@ -10,10 +19,7 @@ export default function AuthPanel() {
             <button
                 type='button'
                 className='user-button control-button'
-                onClick={() => {
-                    localStorage.clear();
-                    setLoggedIn(false);
-                }}>
+                onClick={handleLogout}>
                 Logout
             </button>
         </div>

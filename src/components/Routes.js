@@ -5,7 +5,7 @@ import Requester from "./Requester";
 import pin from "../paper-push-pin.svg";
 
 export default function Routes({ routes }) {
-    const { setPinnedRoutes } = useContext(UserContext);
+    const { loggedIn, setPinnedRoutes } = useContext(UserContext);
     const history = useHistory();
 
     const pinRoute = async route => {
@@ -28,13 +28,13 @@ export default function Routes({ routes }) {
                         onClick={() => history.push(`/routes/${route.id}`)}>
                         {route.shortName} - {route.longName}
                     </button>
-                    <img
-                        src={pin}
-                        alt='pin'
+                    <button
+                        disabled={!loggedIn}
                         className='route-pin-button pin-button'
                         style={{ backgroundColor: `#${route.color}` }}
-                        onClick={() => pinRoute(route)}
-                    />
+                        onClick={() => pinRoute(route)}>
+                        <img src={pin} alt='pin' className='pin-img' />
+                    </button>
                 </div>
             ))}
         </div>

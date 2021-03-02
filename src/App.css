@@ -182,13 +182,24 @@ main {
 .pin-button {
     cursor: pointer;
     align-self: stretch;
-    width: 40px;
     margin: 0.75rem 0 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    padding: 0.25rem;
     opacity: 0.88;
+}
+
+/* We have to use !important here because inline styles will override */
+.pin-button:disabled {
+    cursor: auto;
+    background-color: #d8d8d8 !important;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.pin-img {
+    width: 40px;
+    padding: 0.25rem;
 }
 
 .route-details {
