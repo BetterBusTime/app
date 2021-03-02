@@ -8,6 +8,7 @@ export default class Requester {
     static ROUTES_URL = this.BASE + "/routes";
     static STOPS_URL = this.BASE + "/stops";
     static USERS_URL = this.BASE + "/users";
+    static PIN_ROUTE_URL = this.USERS_URL + "/routes";
 
     static postUser = async (endpoint, user) => {
         const url = `${this.USERS_URL}/${endpoint}`;
@@ -26,6 +27,19 @@ export default class Requester {
         return response;
     };
 
+    static postRoutePin = async route => {
+        const options = {
+            headers: {
+                Authorization: `Bearer ${localStorage.access_token}`,
+                "Content-Type": "application/json"
+            }
+        };
+        const response = await axios.post(this.PIN_ROUTE_URL, route, options);
+        return response;
+    };
+
+    // TODO add error handling for these routes
+    // Return the response, let the caller handle the error
     static getRouteList = async () => {
         const response = await axios.get(this.ROUTES_URL);
         return response.data;

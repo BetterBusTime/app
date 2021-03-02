@@ -13,9 +13,15 @@ import BusRoute from "./components/BusRoute";
 import BusStop from "./components/BusStop";
 
 function App() {
+    // Global user state
     const [loggedIn, setLoggedIn] = useState(false);
+    const [pinnedRoutes, setPinnedRoutes] = useState([]);
+    const [pinnedStops, setPinnedStops] = useState([]);
+
+    // Global search state
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
+
     const history = useHistory();
 
     const resetSearch = () => {
@@ -38,7 +44,15 @@ function App() {
 
     return (
         <div className='App'>
-            <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
+            <UserContext.Provider
+                value={{
+                    loggedIn,
+                    setLoggedIn,
+                    pinnedRoutes,
+                    setPinnedRoutes,
+                    pinnedStops,
+                    setPinnedStops
+                }}>
                 <Header />
                 <main>
                     <Pins />

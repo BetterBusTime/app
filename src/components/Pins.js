@@ -1,20 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import UserContext from "./UserContext";
 import Requester from "./Requester";
 import Routes from "./Routes";
 import Stops from "./Stops";
 
 export default function Pins() {
-    const [routes, setRoutes] = useState([]);
-    const [stops, setStops] = useState([]);
+    const {
+        pinnedRoutes,
+        setPinnedRoutes,
+        pinnedStops,
+        setPinnedStops
+    } = useContext(UserContext);
 
     useEffect(() => {
         if (localStorage.access_token) {
             getPins().then(data => {
-                setRoutes(data.routes);
-                setStops(data.stops);
+                setPinnedRoutes(data.routes);
+                setPinnedStops(data.stops);
             });
         }
-    }, []);
+    }, [setPinnedRoutes, setPinnedStops]);
 
     const getPins = async () => {
         try {
@@ -29,23 +34,22 @@ export default function Pins() {
 
             return response.data;
         } catch (error) {
-            if (error.response) console.error(error.response.data.message);
             console.error(error);
         }
     };
 
     return (
         <div className='pins'>
-            {routes.length > 0 && (
+            {pinnedRoutes.length > 0 && (
                 <div className='route-pins'>
                     <p>Pinned Routes</p>
-                    <Routes routes={routes} />
+                    <Routes routes={pinnedRoutes} />
                 </div>
             )}
-            {stops.length > 0 && (
+            {pinnedStops.length > 0 && (
                 <div className='stop-pins'>
                     <p>Pinned Stops</p>
-                    <Stops stops={stops} />
+                    <Stops stops={pinnedStops} />
                 </div>
             )}
         </div>
