@@ -5,7 +5,7 @@ import Requester from "../global/Requester";
 import pin from "../../paper-push-pin.svg";
 
 export default function Routes({ routes }) {
-    const { loggedIn, setPinnedRoutes } = useContext(UserContext);
+    const { loggedIn, pinnedRoutes, setPinnedRoutes } = useContext(UserContext);
     const history = useHistory();
 
     const pinRoute = async route => {
@@ -15,6 +15,22 @@ export default function Routes({ routes }) {
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const unpinRoute = async route => {
+        try {
+            const response = await Requester.deleteRoutePin(route);
+            setPinnedRoutes(response.data.routes);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // We can't use includes because the pinned route and the displayed route
+    // Are considered different objects
+    // If the find returns undefined, this route is not pinned
+    const isPinned = route => {
+        return pinnedRoutes.find(r => r.id === route.id) !== undefined;
     };
 
     return (
@@ -32,8 +48,21 @@ export default function Routes({ routes }) {
                         disabled={!loggedIn}
                         className='route-pin-button pin-button'
                         style={{ backgroundColor: `#${route.color}` }}
-                        onClick={() => pinRoute(route)}>
-                        <img src={pin} alt='pin' className='pin-img' />
+                        onClick={() =>
+                            isPinned(route)
+                                ? unpinRoute(route.id)
+                                : pinRoute(route)
+                        }>
+                        <img
+                            src={pin}
+                            alt='pin'
+                            className='pin-img'
+                            style={{
+                                filter: isPinned(route)
+                                    ? "invert(100%)"
+                                    : "invert(0%)"
+                            }}
+                        />
                     </button>
                 </div>
             ))}

@@ -8,8 +8,8 @@ export default class Requester {
     static ROUTES_URL = this.BASE + "/routes";
     static STOPS_URL = this.BASE + "/stops";
     static USERS_URL = this.BASE + "/users";
-    static PIN_ROUTE_URL = this.USERS_URL + "/routes";
-    static PIN_STOP_URL = this.USERS_URL + "/stops";
+    static ROUTE_PINS_URL = this.USERS_URL + "/routes";
+    static STOP_PINS_URL = this.USERS_URL + "/stops";
 
     static postUser = async (endpoint, user) => {
         const url = `${this.USERS_URL}/${endpoint}`;
@@ -35,7 +35,19 @@ export default class Requester {
                 "Content-Type": "application/json"
             }
         };
-        const response = await axios.post(this.PIN_ROUTE_URL, route, options);
+        const response = await axios.post(this.ROUTE_PINS_URL, route, options);
+        return response;
+    };
+
+    static deleteRoutePin = async route => {
+        const url = `${this.ROUTE_PINS_URL}/${route}`;
+        const options = {
+            headers: {
+                Authorization: `Bearer ${localStorage.access_token}`,
+                "Content-Type": "application/json"
+            }
+        };
+        const response = await axios.delete(url, options);
         return response;
     };
 
@@ -46,7 +58,7 @@ export default class Requester {
                 "Content-Type": "application/json"
             }
         };
-        const response = await axios.post(this.PIN_STOP_URL, stop, options);
+        const response = await axios.post(this.STOP_PINS_URL, stop, options);
         return response;
     };
 
