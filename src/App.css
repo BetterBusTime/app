@@ -121,7 +121,6 @@ main {
 
 .control-button {
     outline: none;
-    color: white;
     background-color: var(--accent-color);
     font-weight: 500;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -238,13 +237,26 @@ main {
     flex: 1;
     font-size: 1.25rem;
     min-height: 70px;
+    background-color: var(--stop-color);
     margin: 0.75rem 0 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
+.stop-button:hover,
+.stop-pin-button:hover {
+    background-color: var(--stop-dim);
+}
+
+.stop-button:focus,
+.stop-button:active,
+.stop-pin-button:focus,
+.stop-pin-button:active {
+    background-color: var(--stop-dimmer);
+}
+
 .stop-pin-button {
-    background-color: var(--accent-color);
+    background-color: var(--stop-color);
     opacity: 1;
 }
 

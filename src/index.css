@@ -5,9 +5,13 @@
     --accent-font: "Chakra Petch", sans-serif;
 
     --mta-blue: #1c57b3;
-    --accent-color: #1cb378;
-    --accent-dim: #199d69;
-    --accent-dimmer: #15875a;
+    --accent-color: #a9c5d8;
+    --accent-dim: #86adc8;
+    --accent-dimmer: #74a2c0;
+
+    --stop-color: #f2645f;
+    --stop-dim: #f04d47;
+    --stop-dimmer: #ee362f;
 }
 
 body {
