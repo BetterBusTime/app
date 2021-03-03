@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../user/UserContext";
 import Requester from "../global/Requester";
-import pin from "../../paper-push-pin.svg";
+import pin from "../../assets/paper-push-pin.svg";
 
 export default function Stops({ stops }) {
     const { loggedIn, pinnedStops, setPinnedStops } = useContext(UserContext);

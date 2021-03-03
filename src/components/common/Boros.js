@@ -1,41 +1,19 @@
 import { useHistory } from "react-router-dom";
 
-export default function Boros() {
+export default function Boros({ boros }) {
     const history = useHistory();
-
-    const boros = [
-        {
-            key: "B",
-            val: "Brooklyn"
-        },
-        {
-            key: "Bx",
-            val: "The Bronx"
-        },
-        {
-            key: "M",
-            val: "Manhattan"
-        },
-        {
-            key: "Q",
-            val: "Queens"
-        },
-        {
-            key: "S",
-            val: "Staten Island"
-        }
-    ];
 
     return (
         <div className='boros-buttons buttons-container'>
             {boros.map(boro => (
-                <button
+                <div
                     type='button'
                     key={boro.key}
                     className='boro-button control-button'
                     onClick={() => history.push(`/boros/${boro.key}`)}>
-                    {boro.val}
-                </button>
+                    <img src={boro.img} alt={boro.val} className='boro-img' />
+                    <p className='boro-label'>{boro.val}</p>
+                </div>
             ))}
         </div>
     );

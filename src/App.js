@@ -1,5 +1,11 @@
 import "./App.css";
 
+import B from "./assets/brooklyn.jpg";
+import Bx from "./assets/bronx.jpg";
+import M from "./assets/manhattan.jpg";
+import Q from "./assets/queens.jpg";
+import S from "./assets/staten-island.jpg";
+
 import { useEffect, useState } from "react";
 import { useHistory, Redirect, Route, Switch } from "react-router-dom";
 import UserContext from "./components/user/UserContext";
@@ -21,6 +27,34 @@ function App() {
     // Global search state
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
+
+    const boros = [
+        {
+            key: "B",
+            val: "Brooklyn",
+            img: B
+        },
+        {
+            key: "Bx",
+            val: "The Bronx",
+            img: Bx
+        },
+        {
+            key: "M",
+            val: "Manhattan",
+            img: M
+        },
+        {
+            key: "Q",
+            val: "Queens",
+            img: Q
+        },
+        {
+            key: "S",
+            val: "Staten Island",
+            img: S
+        }
+    ];
 
     const history = useHistory();
 
@@ -78,7 +112,10 @@ function App() {
                                 <Boro boroKey={match.params.id} />
                             )}
                         />
-                        <Route path='/boros' render={() => <Boros />} />
+                        <Route
+                            path='/boros'
+                            render={() => <Boros boros={boros} />}
+                        />
                         <Route
                             path='/routes/:id'
                             render={({ match }) => (
