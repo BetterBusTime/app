@@ -37,7 +37,7 @@ export default function Stops({ stops }) {
             className='stop-buttons-container buttons-container'
             style={{ overflow: "hidden" }}>
             {stops.map(stop => (
-                <Bounce right key={stop.id}>
+                <Bounce bottom key={stop.id}>
                     <div className='stop-buttons'>
                         <button
                             type='button'

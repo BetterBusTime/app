@@ -34,7 +34,7 @@ export default function BusRoute({ routeId }) {
     return (
         route && (
             <div className='bus-route' style={{ overflow: "hidden" }}>
-                <Bounce left>
+                <Bounce top>
                     <div className='route-details'>
                         <p className='route-name'>
                             {route.shortName} - {route.longName}
