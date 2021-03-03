@@ -33,39 +33,39 @@ The [MTA OneBusAway API](https://bustime.mta.info/wiki/Developers/OneBusAwayREST
 
 ## Timeframes
 
-| Tasks                   | Priority | Anticipated | Invested | Total |
-| ----------------------- | -------- | ----------- | -------- | ----- |
-| Project scaffolding     | H        | 2 hrs       | 2 hrs    | X     |
-| Backend models          | H        | 4 hrs       | 2 hrs    | X     |
-| User authentication     | H        | 4 hrs       | 12 hrs   | X     |
-| RESTful routes          | H        | 4 hrs       | 8 hrs    | X     |
-| Deploy backend          | H        | 2 hrs       | 1 hr     | X     |
-| Landing page components | H        | 4 hrs       | 6 hrs    | X     |
-| Header components       | H        | 4 hrs       | 4 hrs    | X     |
-| Search functionality    | H        | 4 hrs       | 7 hrs    | X     |
-| Main section components | H        | 8 hrs       | 4 hrs    | X     |
-| Pin routes / stops      | H        | 8 hrs       | 3 hrs    | X     |
-| Deploy frontend         | H        | 2 hrs       | 1 hr     | X     |
-| Add responsive styles   | M        | 8 hrs       | X        | X     |
-| Search stop by address  | M        | 8 hrs       | X        | X     |
-| View standard schedules | M        | 4 hrs       | X        | X     |
-| Bus stops on GPS map    | M        | 8 hrs       | X        | X     |
-| Calculated walking time | M        | 8 hrs       | X        | X     |
-| Video presentation      | H        | 12 hrs      | X        | X     |
-| Bug fixes               | H        | 20 hrs      | 8 hrs    | X     |
-| Refactoring             | M        | 20 hrs      | 10 hrs   | X     |
-| TOTALS                  | X        | 134 hrs     | 68 hrs   | X     |
+| Tasks                   | Priority | Anticipated | Invested | Total  |
+| ----------------------- | -------- | ----------- | -------- | ------ |
+| Project scaffolding     | H        | 2 hrs       | 2 hrs    | 2 hrs  |
+| Backend models          | H        | 4 hrs       | 2 hrs    | 2 hrs  |
+| User authentication     | H        | 4 hrs       | 12 hrs   | 12 hrs |
+| RESTful routes          | H        | 4 hrs       | 8 hrs    | 8 hrs  |
+| Deploy backend          | H        | 2 hrs       | 1 hr     | 1 hr   |
+| Landing page components | H        | 4 hrs       | 6 hrs    | 6 hrs  |
+| Header components       | H        | 4 hrs       | 4 hrs    | 4 hrs  |
+| Search functionality    | H        | 4 hrs       | 7 hrs    | 7 hrs  |
+| Main section components | H        | 8 hrs       | 4 hrs    | 4 hrs  |
+| Pin routes / stops      | H        | 8 hrs       | 3 hrs    | 3 hrs  |
+| Deploy frontend         | H        | 2 hrs       | 1 hr     | 1 hr   |
+| Add responsive styles   | M        | 8 hrs       | 6 hrs    | 6 hrs  |
+| Search stop by address  | M        | 8 hrs       | X        | X      |
+| View standard schedules | M        | 4 hrs       | X        | X      |
+| Bus stops on GPS map    | M        | 8 hrs       | X        | X      |
+| Calculated walking time | M        | 8 hrs       | X        | X      |
+| Video presentation      | H        | 12 hrs      | X        | X      |
+| Bug fixes               | H        | 20 hrs      | 10 hrs   | 10 hrs |
+| Refactoring             | M        | 20 hrs      | 10 hrs   | 10 hrs |
+| TOTALS                  | X        | 134 hrs     | 76 hrs   | 76 hrs |
 
 ## Anticipated Schedule
 
-| Date   | Deliverable                                     | Status      |
-| ------ | ----------------------------------------------- | ----------- |
-| Feb 24 | Scaffolding, models, user auth                  | complete    |
-| Feb 25 | Routes, backend deployment, frontend components | complete    |
-| Feb 26 | Frontend components, search                     | complete    |
-| Feb 27 | Frontend components, pin routes / stops         | complete    |
-| Feb 28 | Frontend deployment, responsive styles          | in progress |
-| Mar 1  | Search stops, schedules                         | incomplete  |
-| Mar 2  | GPS stops, walk times                           | incomplete  |
-| Mar 3  | Video presentation                              | incomplete  |
-| Mar 4  | PRESENTATION DAY                                | incomplete  |
+| Date   | Deliverable                                     | Status     |
+| ------ | ----------------------------------------------- | ---------- |
+| Feb 24 | Scaffolding, models, user auth                  | complete   |
+| Feb 25 | Routes, backend deployment, frontend components | complete   |
+| Feb 26 | Frontend components, search                     | complete   |
+| Feb 27 | Frontend components, pin routes / stops         | complete   |
+| Feb 28 | Frontend deployment, responsive styles          | complete   |
+| Mar 1  | Search stops, schedules                         | incomplete |
+| Mar 2  | GPS stops, walk times                           | incomplete |
+| Mar 3  | Video presentation                              | incomplete |
+| Mar 4  | PRESENTATION DAY                                | incomplete |
