@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Bounce from "react-reveal/Bounce";
 import Requester from "./Requester";
 import Routes from "../common/Routes";
 
@@ -49,13 +50,15 @@ export default function Searcher({
 
     return (
         <div className='search-container'>
-            <input
-                type='text'
-                className='search-query form-input'
-                placeholder='Find your route...'
-                value={query}
-                onChange={handleChange}
-            />
+            <Bounce left>
+                <input
+                    type='text'
+                    className='search-query form-input'
+                    placeholder='Find your route...'
+                    value={query}
+                    onChange={handleChange}
+                />
+            </Bounce>
             <Routes routes={results} />
         </div>
     );

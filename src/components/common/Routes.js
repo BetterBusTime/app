@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import Bounce from "react-reveal/Bounce";
 import UserContext from "../user/UserContext";
 import Requester from "../global/Requester";
 import pin from "../../assets/paper-push-pin.svg";
@@ -34,38 +35,42 @@ export default function Routes({ routes }) {
     };
 
     return (
-        <div className='route-buttons-container buttons-container'>
+        <div
+            className='route-buttons-container buttons-container'
+            style={{ overflow: "hidden" }}>
             {routes.map(route => (
-                <div key={route.id} className='route-buttons'>
-                    <button
-                        type='button'
-                        className='route-button control-button'
-                        style={{ backgroundColor: `#${route.color}` }}
-                        onClick={() => history.push(`/routes/${route.id}`)}>
-                        <p className='route-number'>{route.shortName}</p>
-                        <p className='route-longname'>{route.longName}</p>
-                    </button>
-                    <button
-                        disabled={!loggedIn}
-                        className='route-pin-button pin-button'
-                        style={{ backgroundColor: `#${route.color}` }}
-                        onClick={() =>
-                            isPinned(route)
-                                ? unpinRoute(route.id)
-                                : pinRoute(route)
-                        }>
-                        <img
-                            src={pin}
-                            alt='pin'
-                            className='pin-img'
-                            style={{
-                                filter: isPinned(route)
-                                    ? "invert(100%)"
-                                    : "invert(0%)"
-                            }}
-                        />
-                    </button>
-                </div>
+                <Bounce right key={route.id}>
+                    <div className='route-buttons'>
+                        <button
+                            type='button'
+                            className='route-button control-button'
+                            style={{ backgroundColor: `#${route.color}` }}
+                            onClick={() => history.push(`/routes/${route.id}`)}>
+                            <p className='route-number'>{route.shortName}</p>
+                            <p className='route-longname'>{route.longName}</p>
+                        </button>
+                        <button
+                            disabled={!loggedIn}
+                            className='route-pin-button pin-button'
+                            style={{ backgroundColor: `#${route.color}` }}
+                            onClick={() =>
+                                isPinned(route)
+                                    ? unpinRoute(route.id)
+                                    : pinRoute(route)
+                            }>
+                            <img
+                                src={pin}
+                                alt='pin'
+                                className='pin-img'
+                                style={{
+                                    filter: isPinned(route)
+                                        ? "invert(100%)"
+                                        : "invert(0%)"
+                                }}
+                            />
+                        </button>
+                    </div>
+                </Bounce>
             ))}
         </div>
     );

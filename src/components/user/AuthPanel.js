@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Fade from "react-reveal/Fade";
 import UserContext from "./UserContext";
 
 export default function AuthPanel() {
@@ -14,14 +15,18 @@ export default function AuthPanel() {
     };
 
     return (
-        <div>
-            <p className='user-greeting'>Hello, {localStorage.username}</p>
-            <button
-                type='button'
-                className='user-button control-button'
-                onClick={handleLogout}>
-                Logout
-            </button>
+        <div style={{ overflow: "hidden" }}>
+            <Fade left>
+                <p className='user-greeting'>Hello, {localStorage.username}</p>
+            </Fade>
+            <Fade right>
+                <button
+                    type='button'
+                    className='user-button control-button'
+                    onClick={handleLogout}>
+                    Logout
+                </button>
+            </Fade>
         </div>
     );
 }

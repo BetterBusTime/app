@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import Bounce from "react-reveal/Bounce";
 import UserContext from "../user/UserContext";
 import Requester from "../global/Requester";
 import pin from "../../assets/paper-push-pin.svg";
@@ -32,33 +33,37 @@ export default function Stops({ stops }) {
     };
 
     return (
-        <div className='stop-buttons-container'>
+        <div className='stop-buttons-container' style={{ overflow: "hidden" }}>
             {stops.map(stop => (
-                <div key={stop.id} className='stop-buttons'>
-                    <button
-                        type='button'
-                        className='stop-button control-button'
-                        onClick={() => history.push(`/stops/${stop.code}`)}>
-                        {stop.name}
-                    </button>
-                    <button
-                        disabled={!loggedIn}
-                        className='stop-pin-button pin-button'
-                        onClick={() =>
-                            isPinned(stop) ? unpinStop(stop.id) : pinStop(stop)
-                        }>
-                        <img
-                            src={pin}
-                            alt='pin'
-                            className='pin-img'
-                            style={{
-                                filter: isPinned(stop)
-                                    ? "invert(100%)"
-                                    : "invert(0%)"
-                            }}
-                        />
-                    </button>
-                </div>
+                <Bounce right key={stop.id}>
+                    <div className='stop-buttons'>
+                        <button
+                            type='button'
+                            className='stop-button control-button'
+                            onClick={() => history.push(`/stops/${stop.code}`)}>
+                            {stop.name}
+                        </button>
+                        <button
+                            disabled={!loggedIn}
+                            className='stop-pin-button pin-button'
+                            onClick={() =>
+                                isPinned(stop)
+                                    ? unpinStop(stop.id)
+                                    : pinStop(stop)
+                            }>
+                            <img
+                                src={pin}
+                                alt='pin'
+                                className='pin-img'
+                                style={{
+                                    filter: isPinned(stop)
+                                        ? "invert(100%)"
+                                        : "invert(0%)"
+                                }}
+                            />
+                        </button>
+                    </div>
+                </Bounce>
             ))}
         </div>
     );

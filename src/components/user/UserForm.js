@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Bounce from "react-reveal/Bounce";
 import UserContext from "./UserContext";
 import Requester from "../global/Requester";
 
@@ -63,33 +64,38 @@ export default function UserForm({ text }) {
     const toTitleCase = word => word[0].toUpperCase().concat(word.slice(1));
 
     return (
-        <form className='user-form' onSubmit={handleSubmit}>
-            <label htmlFor='username' className='form-label'>
-                Username
-            </label>
-            <input
-                id='username'
-                type='text'
-                className='form-input'
-                placeholder='Enter your username'
-                value={user.username}
-                onChange={handleChange}
-            />
-            <label htmlFor='password' className='form-label'>
-                Password
-            </label>
-            <input
-                id='password'
-                type='password'
-                className='form-input'
-                placeholder='Enter your password'
-                value={user.password}
-                onChange={handleChange}
-            />
-            <button type='submit' className='submit-button control-button'>
-                {toTitleCase(text)}
-            </button>
-            <p className='error-text'>{error}</p>
+        <form
+            className='user-form'
+            onSubmit={handleSubmit}
+            style={{ overflow: "hidden" }}>
+            <Bounce bottom>
+                <label htmlFor='username' className='form-label'>
+                    Username
+                </label>
+                <input
+                    id='username'
+                    type='text'
+                    className='form-input'
+                    placeholder='Enter your username'
+                    value={user.username}
+                    onChange={handleChange}
+                />
+                <label htmlFor='password' className='form-label'>
+                    Password
+                </label>
+                <input
+                    id='password'
+                    type='password'
+                    className='form-input'
+                    placeholder='Enter your password'
+                    value={user.password}
+                    onChange={handleChange}
+                />
+                <button type='submit' className='submit-button control-button'>
+                    {toTitleCase(text)}
+                </button>
+                <p className='error-text'>{error}</p>
+            </Bounce>
         </form>
     );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Bounce from "react-reveal/Bounce";
 import Requester from "../global/Requester";
 import Stops from "./Stops";
 
@@ -32,20 +33,26 @@ export default function BusRoute({ routeId }) {
 
     return (
         route && (
-            <div className='bus-route'>
-                <div className='route-details'>
-                    <p className='route-name'>
-                        {route.shortName} - {route.longName}
-                    </p>
-                    <p className='route-desc'>{route.description}</p>
-                </div>
+            <div className='bus-route' style={{ overflow: "hidden" }}>
+                <Bounce left>
+                    <div className='route-details'>
+                        <p className='route-name'>
+                            {route.shortName} - {route.longName}
+                        </p>
+                        <p className='route-desc'>{route.description}</p>
+                    </div>
+                </Bounce>
                 <div className='bus-stops'>
                     <div className='outbound-direction buttons-container'>
-                        <p className='outbound-label'>Outbound Stops</p>
+                        <Bounce right>
+                            <p className='outbound-label'>Outbound Stops</p>
+                        </Bounce>
                         <Stops stops={route.outbound.stops} />
                     </div>
                     <div className='inbound-direction buttons-container'>
-                        <p className='inbound-label'>Inbound Stops</p>
+                        <Bounce left>
+                            <p className='inbound-label'>Inbound Stops</p>
+                        </Bounce>
                         <Stops stops={route.inbound.stops} />
                     </div>
                 </div>

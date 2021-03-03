@@ -29,6 +29,7 @@ main {
     display: flex;
     flex-direction: column;
     margin: 2rem;
+    padding: 0.5rem;
 }
 
 .form-label {

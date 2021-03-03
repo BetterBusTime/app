@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import Bounce from "react-reveal/Bounce";
 import UserContext from "./UserContext";
 import Requester from "../global/Requester";
 import Routes from "../common/Routes";
@@ -42,13 +43,21 @@ export default function Pins() {
         <div className='pins'>
             {pinnedRoutes.length > 0 && (
                 <div className='route-pins'>
-                    <p className='route-pins-label pins-label'>Pinned Routes</p>
+                    <Bounce left>
+                        <p className='route-pins-label pins-label'>
+                            Pinned Routes
+                        </p>
+                    </Bounce>
                     <Routes routes={pinnedRoutes} />
                 </div>
             )}
             {pinnedStops.length > 0 && (
                 <div className='stop-pins'>
-                    <p className='stop-pins-label pins-label'>Pinned Stops</p>
+                    <Bounce left>
+                        <p className='stop-pins-label pins-label'>
+                            Pinned Stops
+                        </p>
+                    </Bounce>
                     <Stops stops={pinnedStops} />
                 </div>
             )}

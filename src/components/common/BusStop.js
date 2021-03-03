@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Bounce from "react-reveal/Bounce";
 import Requester from "../global/Requester";
 
 export default function BusStop({ stopCode }) {
@@ -59,22 +60,22 @@ export default function BusStop({ stopCode }) {
 
     return (
         stop && (
-            <div className='bus-stop'>
+            <div className='bus-stop' style={{ overflow: "hidden" }}>
                 {stop.visitors.map((visitor, index) => (
                     // Duplicate keys can show up because MTA data will supply
                     // future data for the same bus, indicating round trips to
                     // a stop
-                    <div
-                        key={`${visitor.ref}_${index}`}
-                        className='stop-visitor'>
-                        <p className='line-name'>
-                            {visitor.line} to {visitor.dest}
-                        </p>
-                        <p className='time-away'>
-                            {timeAway(visitor.calls)} -{" "}
-                            {visitor.calls.ArrivalProximityText}
-                        </p>
-                    </div>
+                    <Bounce bottom key={`${visitor.ref}_${index}`}>
+                        <div className='stop-visitor'>
+                            <p className='line-name'>
+                                {visitor.line} to {visitor.dest}
+                            </p>
+                            <p className='time-away'>
+                                {timeAway(visitor.calls)} -{" "}
+                                {visitor.calls.ArrivalProximityText}
+                            </p>
+                        </div>
+                    </Bounce>
                 ))}
             </div>
         )
