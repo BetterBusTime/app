@@ -8,7 +8,16 @@ header {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 0 1rem;
+}
+
+.auth-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .user-greeting {
@@ -35,6 +44,7 @@ main {
 .form-label {
     font-size: 1.25rem;
     font-weight: 500;
+    align-self: flex-start;
 }
 
 .form-input {
@@ -59,7 +69,9 @@ main {
 }
 
 .submit-button {
+    align-self: center;
     font-size: 1.25rem;
+    width: 150px;
     margin: 2rem 4rem;
     padding: 0.5rem;
 }
@@ -147,7 +159,7 @@ main {
 
 .boro-button {
     font-size: 2rem;
-    max-width: 300px;
+    width: 300px;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -280,10 +292,6 @@ main {
     align-self: flex-start;
 }
 
-.stop-buttons-container {
-    align-self: stretch;
-}
-
 .stop-button {
     flex: 1;
     font-size: 1rem;
@@ -334,4 +342,129 @@ main {
 .line-name {
     font-weight: 700;
     font-style: italic;
+}
+
+@media screen and (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .title-banner {
+        font-size: 3rem;
+        margin: 0 1rem;
+    }
+
+    .user-button {
+        margin: 0 1rem;
+    }
+
+    .user-greeting {
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .buttons-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .boro-button {
+        width: 520px;
+    }
+
+    .boro-img {
+        width: 520px;
+    }
+
+    .boro-label {
+        font-size: 3rem;
+    }
+
+    .route-buttons {
+        width: 360px;
+        height: 210px;
+    }
+
+    .route-button {
+        align-self: stretch;
+        flex-direction: column;
+        justify-content: center;
+        margin: 1rem 0 0 1rem;
+    }
+
+    .pin-button {
+        margin: 1rem 0 0 0;
+    }
+
+    .route-number {
+        flex: initial;
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .route-longname {
+        flex: initial;
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .route-details {
+        font-size: 2rem;
+    }
+
+    .route-desc {
+        font-size: 1.5rem;
+    }
+
+    .bus-stops {
+        display: flex;
+    }
+
+    .outbound-direction,
+    .inbound-direction {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .outbound-label,
+    .inbound-label {
+        font-size: 1.75rem;
+    }
+
+    .outbound-direction .stop-buttons-container {
+        justify-content: flex-end;
+    }
+
+    .inbound-direction .stop-buttons-container {
+        justify-content: flex-start;
+    }
+
+    .stop-buttons {
+        width: 300px;
+        height: 150px;
+        margin: 1rem 0.5rem 0;
+    }
+
+    .stop-button {
+        align-self: stretch;
+        font-size: 1.25rem;
+    }
+
+    .stop-pin-button {
+        margin: 0.75rem 0 0;
+    }
+
+    .stop-visitor {
+        margin: 1.5rem 0.5rem;
+    }
+
+    .line-name {
+        font-size: 1.5rem;
+    }
+
+    .time-away {
+        font-size: 1.75rem;
+    }
 }

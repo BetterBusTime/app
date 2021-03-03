@@ -44,13 +44,13 @@ export default function BusRoute({ routeId }) {
                 </Bounce>
                 <div className='bus-stops'>
                     <div className='outbound-direction buttons-container'>
-                        <Bounce right>
+                        <Bounce left>
                             <p className='outbound-label'>Outbound Stops</p>
                         </Bounce>
                         <Stops stops={route.outbound.stops} />
                     </div>
                     <div className='inbound-direction buttons-container'>
-                        <Bounce left>
+                        <Bounce right>
                             <p className='inbound-label'>Inbound Stops</p>
                         </Bounce>
                         <Stops stops={route.inbound.stops} />

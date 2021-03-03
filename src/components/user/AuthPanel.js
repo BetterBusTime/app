@@ -15,7 +15,7 @@ export default function AuthPanel() {
     };
 
     return (
-        <div style={{ overflow: "hidden" }}>
+        <div className='auth-panel' style={{ overflow: "hidden" }}>
             <Fade left>
                 <p className='user-greeting'>Hello, {localStorage.username}</p>
             </Fade>

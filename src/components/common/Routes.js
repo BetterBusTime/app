@@ -39,7 +39,7 @@ export default function Routes({ routes }) {
             className='route-buttons-container buttons-container'
             style={{ overflow: "hidden" }}>
             {routes.map(route => (
-                <Bounce right key={route.id}>
+                <Bounce bottom key={route.id}>
                     <div className='route-buttons'>
                         <button
                             type='button'

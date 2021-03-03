@@ -42,7 +42,7 @@ export default function Boros() {
             className='boros-buttons buttons-container'
             style={{ overflow: "hidden" }}>
             {boros.map(boro => (
-                <Bounce right key={boro.key}>
+                <Bounce bottom key={boro.key}>
                     <div
                         type='button'
                         className='boro-button control-button'

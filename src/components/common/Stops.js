@@ -33,7 +33,9 @@ export default function Stops({ stops }) {
     };
 
     return (
-        <div className='stop-buttons-container' style={{ overflow: "hidden" }}>
+        <div
+            className='stop-buttons-container buttons-container'
+            style={{ overflow: "hidden" }}>
             {stops.map(stop => (
                 <Bounce right key={stop.id}>
                     <div className='stop-buttons'>
