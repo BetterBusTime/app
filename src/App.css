@@ -498,4 +498,9 @@ footer {
     .time-away {
         font-size: 1.75rem;
     }
+
+    .no-visitors {
+        text-align: justify;
+        font-size: 1.5rem;
+    }
 }
