@@ -64,6 +64,7 @@ function App() {
                         resetSearch={resetSearch}
                     />
                     <Switch>
+                        {/* TODO make these routes self sufficient? */}
                         <Route
                             path='/users/login'
                             render={() => <UserForm text='login' />}
