@@ -42,7 +42,8 @@ export default function Routes({ routes }) {
                         className='route-button control-button'
                         style={{ backgroundColor: `#${route.color}` }}
                         onClick={() => history.push(`/routes/${route.id}`)}>
-                        {route.shortName} - {route.longName}
+                        <p className='route-number'>{route.shortName}</p>
+                        <p className='route-longname'>{route.longName}</p>
                     </button>
                     <button
                         disabled={!loggedIn}

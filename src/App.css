@@ -13,7 +13,7 @@ main {
 
 .user-greeting {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0.5rem 0 0;
     text-align: center;
 }
@@ -101,10 +101,11 @@ main {
 .search-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 .search-query {
-    margin: 2rem 2rem 1rem;
+    margin: 2rem 2rem 0;
 }
 
 .search-button {
@@ -123,7 +124,7 @@ main {
 .control-button {
     outline: none;
     background-color: var(--accent-color);
-    font-weight: 500;
+    font-weight: 600;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.5rem;
     transition: 0.1s all linear;
@@ -169,11 +170,13 @@ main {
 }
 
 .boro-label {
+    font-weight: 700;
     margin: 0.5rem;
 }
 
 .route-buttons,
 .stop-buttons {
+    align-self: stretch;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -182,12 +185,27 @@ main {
 .route-button {
     flex: 1;
     color: black;
-    font-size: 1.25rem;
+    font-size: 1rem;
     min-height: 70px;
     margin: 0.75rem 0 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     opacity: 0.88;
+    display: flex;
+    align-items: center;
+}
+
+.route-number {
+    flex: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0.75rem 0 0.25rem;
+}
+
+.route-longname {
+    flex: 1;
+    margin: 0;
+    text-align: left;
 }
 
 .route-button:hover,
@@ -221,7 +239,7 @@ main {
 }
 
 .pin-img {
-    width: 40px;
+    width: 32px;
     padding: 0.25rem;
 }
 
@@ -254,40 +272,56 @@ main {
 }
 
 .outbound-label {
-    text-align: right;
+    align-self: flex-end;
+}
+
+.inbound-label {
+    align-self: flex-start;
+}
+
+.stop-buttons-container {
+    align-self: stretch;
 }
 
 .stop-button {
     flex: 1;
-    font-size: 1.25rem;
+    font-size: 1rem;
     min-height: 70px;
-    background-color: var(--stop-color);
+    color: black;
     margin: 0.75rem 0 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    padding-left: 1.25rem;
+    text-align: left;
 }
 
 .stop-button:hover,
 .stop-pin-button:hover {
-    background-color: var(--stop-dim);
+    background-color: var(--stop-color);
+    opacity: 0.94;
 }
 
 .stop-button:focus,
 .stop-button:active,
 .stop-pin-button:focus,
 .stop-pin-button:active {
-    background-color: var(--stop-dimmer);
-}
-
-.stop-pin-button {
     background-color: var(--stop-color);
     opacity: 1;
 }
 
+.stop-button,
+.stop-pin-button {
+    background-color: var(--stop-color);
+    opacity: 0.88;
+}
+
 .stop-visitor {
+    align-self: stretch;
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0.75rem 0.25rem;
+    border-bottom: 3px solid var(--mta-blue);
+    padding-bottom: 0.25rem;
 }
 
 .line-name,

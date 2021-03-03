@@ -1,6 +1,39 @@
 import { useHistory } from "react-router-dom";
+import B from "../../assets/brooklyn.jpg";
+import Bx from "../../assets/bronx.jpg";
+import M from "../../assets/manhattan.jpg";
+import Q from "../../assets/queens.jpg";
+import S from "../../assets/staten-island.jpg";
 
-export default function Boros({ boros }) {
+export default function Boros() {
+    const boros = [
+        {
+            key: "B",
+            val: "Brooklyn",
+            img: B
+        },
+        {
+            key: "Bx",
+            val: "The Bronx",
+            img: Bx
+        },
+        {
+            key: "M",
+            val: "Manhattan",
+            img: M
+        },
+        {
+            key: "Q",
+            val: "Queens",
+            img: Q
+        },
+        {
+            key: "S",
+            val: "Staten Island",
+            img: S
+        }
+    ];
+
     const history = useHistory();
 
     return (
