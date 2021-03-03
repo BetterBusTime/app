@@ -59,7 +59,7 @@ export default function Searcher({
                     onChange={handleChange}
                 />
             </Bounce>
-            <Routes routes={results} />
+            <Routes routes={results} spy={query} />
         </div>
     );
 }

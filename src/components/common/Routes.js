@@ -5,7 +5,7 @@ import UserContext from "../user/UserContext";
 import Requester from "../global/Requester";
 import pin from "../../assets/paper-push-pin.svg";
 
-export default function Routes({ routes }) {
+export default function Routes({ routes, spy }) {
     const { loggedIn, pinnedRoutes, setPinnedRoutes } = useContext(UserContext);
     const history = useHistory();
 
@@ -39,7 +39,7 @@ export default function Routes({ routes }) {
             className='route-buttons-container buttons-container'
             style={{ overflow: "hidden" }}>
             {routes.map(route => (
-                <Bounce bottom key={route.id}>
+                <Bounce bottom key={route.id} spy={spy}>
                     <div className='route-buttons'>
                         <button
                             type='button'
