@@ -8,7 +8,41 @@ header {
 }
 
 main {
-    margin: 0 0 1rem;
+    margin: 0 0 3.25rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-color: var(--mta-blue);
+    display: flex;
+    justify-content: center;
+    padding: 0.25rem;
+}
+
+.about {
+    margin: 1rem;
+    text-align: justify;
+}
+
+.credits {
+    margin: 2rem;
+    text-align: center;
+}
+
+.footer-link {
+    font-family: var(--accent-font);
+    font-size: 1.25rem;
+    color: white;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 0 1px var(--accent-color);
 }
 
 .auth-panel {

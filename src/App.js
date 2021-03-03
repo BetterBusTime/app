@@ -6,11 +6,14 @@ import UserContext from "./components/user/UserContext";
 import Header from "./components/global/Header";
 import Pins from "./components/user/Pins";
 import Searcher from "./components/global/Searcher";
+import About from "./components/global/About";
+import Credits from "./components/global/Credits";
 import UserForm from "./components/user/UserForm";
 import Boro from "./components/common/Boro";
 import Boros from "./components/common/Boros";
 import BusRoute from "./components/common/BusRoute";
 import BusStop from "./components/common/BusStop";
+import Footer from "./components/global/Footer";
 
 function App() {
     // Global user state
@@ -43,7 +46,7 @@ function App() {
     }, []);
 
     return (
-        <div className='App'>
+        <div className='App' style={{ overflow: "hidden" }}>
             <UserContext.Provider
                 value={{
                     loggedIn,
@@ -64,7 +67,8 @@ function App() {
                         resetSearch={resetSearch}
                     />
                     <Switch>
-                        {/* TODO make these routes self sufficient? */}
+                        <Route path='/about' render={() => <About />} />
+                        <Route path='/credits' render={() => <Credits />} />
                         <Route
                             path='/users/login'
                             render={() => <UserForm text='login' />}
@@ -99,6 +103,7 @@ function App() {
                     </Switch>
                 </main>
             </UserContext.Provider>
+            <Footer />
         </div>
     );
 }
