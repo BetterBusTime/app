@@ -1,8 +1,14 @@
+[![title banner](https://i.imgur.com/4ioraME.png)](https://betterbustime.herokuapp.com/)
+
 # Better Bus Time
 
 Better Bus Time (BBT) aims to be a better [MTA Bus Time](https://bustime.mta.info/). Portions of the MTA Bus Time application reload the webpage, making for a subpar user experience. BBT is designed to be single page application (SPA) from the start. The user should never become aware of data refreshes happening in the background. Another goal of BBT is to allow users to register and pin their favorite bus routes and bus stops, letting you glance at your personalized homepage for BBT to see the transit information most pertinent to you.
 
 The mobile browser version of MTA Bus Time does not provide the GPS map feature to locate bus stops; a future goal for this project is to integrate GPS map functionality across both mobile and desktop browser environments. With GPS information, it should be possible to calculate walking times to bus stops.
+
+## Screenshots
+
+[![landing page](https://i.imgur.com/lOBB9JQ.png)](https://betterbustime.herokuapp.com/)
 
 ## Installation
 
@@ -12,24 +18,26 @@ Packages are managed via `npm`. Run a `npm ci` command to avoid generating a new
 
 The [MTA OneBusAway API](https://bustime.mta.info/wiki/Developers/OneBusAwayRESTfulAPI) does not provide an `Access-Control-Allow-Origin` header, meaning requests from the browser are blocked due to standard CORS policy. To get around this, the backend acts as a proxy server to sidestep the CORS issue. Otherwise, the frontend is written in React.
 
-## User stories
+## Project planning
+
+There is a planning directory at the root of the repository, that contains all of the material I used to plan out this project.
 
 ### MVP
 
--   [x] As a user, I want to quickly search for my bus route.
--   [x] As a user, I want to quickly find my bus stop.
--   [x] As a user, I want to quickly view bus times for my stop.
--   [x] As a user, I want to discover bus routes.
--   [x] As a user, I want to discover bus stops.
--   [x] As a user, I want to pin bus routes to my homepage.
--   [x] As a user, I want to pin bus stops to my homepage.
+-  [x] As a user, I want to quickly search for my bus route.
+-  [x] As a user, I want to quickly find my bus stop.
+-  [x] As a user, I want to quickly view bus times for my stop.
+-  [x] As a user, I want to discover bus routes.
+-  [x] As a user, I want to discover bus stops.
+-  [x] As a user, I want to pin bus routes to my homepage.
+-  [x] As a user, I want to pin bus stops to my homepage.
 
 ### Stretch Goals
 
--   [ ] As a user, I want to quickly search for my bus stop by street address.
--   [ ] As a user, I want to view standard bus schedules.
--   [ ] As a user, I want to locate my bus stop on a map.
--   [ ] As a user, I want the walking time to my stop to be calculated.
+-  [ ] As a user, I want to quickly search for my bus stop by street address.
+-  [ ] As a user, I want to view standard bus schedules.
+-  [ ] As a user, I want to locate my bus stop on a map.
+-  [ ] As a user, I want the walking time to my stop to be calculated.
 
 ## Timeframes
 
