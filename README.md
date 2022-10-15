@@ -1,4 +1,8 @@
-[![title banner](https://i.imgur.com/4ioraME.png)](https://betterbustime.herokuapp.com/)
+![title banner](https://i.imgur.com/4ioraME.png)
+
+## Better Bus Time will be unavailable until further notice.
+
+Better Bus Time was a project for me to learn full stack web development during my tenure at General Assembly. Part of the learning process was deploying a React app to Heroku. With recent policy changes, Heroku is discontinuing their free dynos. Unfortunately, I do not have the time to research and host with another free provider at this time. Perhaps I will re-deploy Better Bus Time at a future time. Thank you for visiting!
 
 # Better Bus Time
 
@@ -8,7 +12,7 @@ The mobile browser version of MTA Bus Time does not provide the GPS map feature 
 
 ## Screenshots
 
-[![landing page](https://i.imgur.com/lOBB9JQ.png)](https://betterbustime.herokuapp.com/)
+![landing page](https://i.imgur.com/lOBB9JQ.png)
 
 ## Installation
 
